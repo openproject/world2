@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tianxia.app.humorjoke"
+    android:versionCode="2"
+    android:versionName="V1.0 Beta">
+    <uses-sdk android:minSdkVersion="7" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+    <application android:name=".AppApplication"
+        android:label="@string/app_name"
+        android:icon="@drawable/icon"
+        android:theme="@android:style/Theme.Black.NoTitleBar">
+        <meta-data android:value="50553b765270152d66000146" android:name="UMENG_APPKEY" />
+        <meta-data android:value="dev" android:name="UMENG_CHANNEL"/>
+        <!--以下属性为应用ID,从万普后台获取-->
+        <meta-data android:name="WAPS_ID" android:value="875a22a99f9b28e1e5d10b41f9df4c6a" />
+        <!--以下属性为分发渠道ID,编码表参见本文档末附表-->
+        <meta-data android:value="dev" android:name="WAPS_PID"/>
+        <activity android:name="AppActivity"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <receiver android:name="com.tianxia.lib.baseworld2.BaseBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".AppSettingActivity" />
+        <activity android:name=".AppDetailsActivity" />
+
+        <activity android:name="com.tianxia.lib.baseworld2.activity.SettingAboutActivity"></activity>
+        <service android:name="com.tianxia.lib.baseworld2.upgrade.AppUpgradeService"></service>
+
+        <activity android:name="com.feedback.ui.SendFeedback" android:windowSoftInputMode="adjustResize" />
+        <activity android:name="com.feedback.ui.FeedbackConversations" />
+        <activity android:name="com.feedback.ui.FeedbackConversation" android:configChanges="keyboard" />
+
+        <!--<activity android:name="com.waps.OffersWebView" android:configChanges="keyboardHidden|orientation"/>-->
+    </application>
+</manifest>

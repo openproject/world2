@@ -1,0 +1,11 @@
+bin
+gen
+out
+build
+.settings
+*.keystore
+*.apk
+keystore.properties
+tags
+cscope.files
+cscope.out

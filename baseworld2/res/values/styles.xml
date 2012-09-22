@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="app_title_shadow">
+        <item name="android:textColor">@color/app_title_white</item>
+        <item name="android:shadowColor">@color/app_title_white_shadow</item>
+        <item name="android:shadowDy">-0.5</item>
+        <item name="android:shadowRadius">2.0</item>
+    </style>
+
+    <style name="app_setting_list_item_title">
+        <item name="android:textSize">16.0dip</item>
+        <item name="android:textColor">#ff4c4c4c</item>
+    </style>
+
+    <style name="app_setting_list_item_description">
+        <item name="android:textSize">12.0dip</item>
+        <item name="android:textColor">#ff5c5c5c</item>
+    </style>
+</resources>

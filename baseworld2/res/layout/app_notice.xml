@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_vertical"
+    android:background="@drawable/app_notice_bg">
+    <ImageView android:id="@+id/app_notice_icon"
+        android:layout_width="24dip"
+        android:layout_height="24dip"
+        android:layout_margin="2dip"
+        android:background="@drawable/app_notice_icon"/>
+    <TextView android:id="@+id/notice_text"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="@dimen/app_notice_left"
+        android:textSize="@dimen/app_notice_size"
+        android:textColor="@color/app_notice_gray"
+        android:text="@string/app_notice_text"/>
+</LinearLayout>
+
