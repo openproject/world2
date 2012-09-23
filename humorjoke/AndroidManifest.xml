@@ -47,6 +47,6 @@
         <activity android:name="com.feedback.ui.FeedbackConversations" />
         <activity android:name="com.feedback.ui.FeedbackConversation" android:configChanges="keyboard" />
 
-        <!--<activity android:name="com.waps.OffersWebView" android:configChanges="keyboardHidden|orientation"/>-->
+        <activity android:name="com.waps.OffersWebView" android:configChanges="keyboardHidden|orientation"/>
     </application>
 </manifest>
