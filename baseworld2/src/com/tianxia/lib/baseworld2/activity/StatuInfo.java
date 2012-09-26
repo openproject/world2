@@ -15,6 +15,7 @@ public class StatuInfo implements Parcelable
     public String pic_thumbnail;
     public String pic_middle;
     public String pic_original;
+    public String from;
 
     public static final Parcelable.Creator<StatuInfo> CREATOR = new Creator<StatuInfo>() {
         @Override
@@ -29,6 +30,7 @@ public class StatuInfo implements Parcelable
             statuInfo.pic_thumbnail = source.readString();
             statuInfo.pic_middle = source.readString();
             statuInfo.pic_original = source.readString();
+            statuInfo.from = source.readString();
             return statuInfo;
         }
         @Override

@@ -1,12 +1,18 @@
 package com.tianxia.lib.baseworld2.activity;
 
+import android.content.Intent;
+import android.content.Context;
+
 import android.os.Bundle;
+
+import android.text.ClipboardManager;
 
 import android.view.View;
 
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tianxia.lib.baseworld2.BaseApplication;
 import com.tianxia.lib.baseworld2.cache.ConfigCache;
@@ -28,9 +34,8 @@ public class DetailsActivity extends BaseActivity
     private Button mAppHeaderBack;
     private View mAppHeaderBackDivider;
 
-    private SmartImageView mItemAvatar;
-    private TextView mItemName;
-    private TextView mItemDate;
+    private Button mItemShare;
+    private Button mItemCopy;
     private TextView mItemText;
     private SmartImageView mItemThumbnail;
 
@@ -72,29 +77,10 @@ public class DetailsActivity extends BaseActivity
 
     private void initContent() {
 
-        mItemAvatar = (SmartImageView) findViewById(R.id.item_avatar);
-        mItemAvatar.setImageUrl(mStatuInfo.avatar, R.drawable.icon, 0);
-
-        mItemName = (TextView) findViewById(R.id.item_name);
-        mItemName.setText(mStatuInfo.name);
-        mItemName.getPaint().setFakeBoldText(true);
-
-        mItemDate = (TextView) findViewById(R.id.item_date);
-        String dateString = mStatuInfo.created;
-        //format the date string
-        if (dateString != null && !"".equals(dateString)) {
-            try {
-                SimpleDateFormat mSinaWeiboDateFormat =
-                    new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", new DateFormatSymbols(Locale.US));
-                SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-                Date date = mSinaWeiboDateFormat.parse(dateString);
-                mItemDate.setText(mSimpleDateFormat.format(date));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-        } else {
-            mItemDate.setText("");
-        }
+        mItemShare = (Button) findViewById(R.id.item_share);
+        mItemCopy = (Button) findViewById(R.id.item_copy);
+        mItemShare.setOnClickListener(this);
+        mItemCopy.setOnClickListener(this);
 
         mItemText = (TextView) findViewById(R.id.item_text);
         mItemText.setText(mStatuInfo.text);
@@ -110,6 +96,16 @@ public class DetailsActivity extends BaseActivity
     public void onClick(View v) {
         if (v == mAppHeaderBack) {
             onBackPressed();
+        } else if (v == mItemShare) {
+            Intent intent=new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.main_options_share_title));
+            intent.putExtra(Intent.EXTRA_TEXT, mStatuInfo.text);
+            startActivity(Intent.createChooser(intent, getString(R.string.setting_share_app_title)));
+        } else if (v == mItemCopy) {
+            ClipboardManager cm = (ClipboardManager) getApplicationContext().getSystemService(Context.CLIPBOARD_SERVICE);
+            cm.setText(mStatuInfo.text);
+            Toast.makeText(this, R.string.main_options_copy_toast, Toast.LENGTH_SHORT).show();
         }
     }
 }

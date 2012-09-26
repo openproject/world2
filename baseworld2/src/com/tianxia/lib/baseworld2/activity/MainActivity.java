@@ -33,9 +33,9 @@ import android.widget.Toast;
 import com.feedback.NotificationType;
 import com.feedback.UMFeedbackService;
 
-import com.tianxia.lib.baseworld2.R;
-import com.tianxia.lib.baseworld2.cache.ConfigCache;
 import com.tianxia.lib.baseworld2.BaseApplication;
+import com.tianxia.lib.baseworld2.cache.ConfigCache;
+import com.tianxia.lib.baseworld2.R;
 import com.tianxia.lib.baseworld2.sync.http.AsyncHttpClient;
 import com.tianxia.lib.baseworld2.sync.http.AsyncHttpResponseHandler;
 import com.tianxia.lib.baseworld2.upgrade.AppUpgradeService;
@@ -50,12 +50,8 @@ import com.tianxia.widget.image.SmartImageView;
 
 import java.io.File;
 
-import java.text.DateFormatSymbols;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
+import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -64,19 +60,18 @@ import org.json.JSONObject;
 public class MainActivity extends AdapterActivity<StatuInfo>
     implements RefreshListener,View.OnClickListener {
 
-    private SmartImageView mItemAvatar;
     private TextView mItemName;
     private TextView mItemDate;
     private TextView mItemText;
     private SmartImageView mItemThumbnail;
+    private TextView mItemFrom;
+    private TextView mItemMonth;
+    private TextView mItemDay;
 
     private Button mAppHeaderMenu;
     private Button mAppHeaderMenu_1;
     private View mAppHeaderDivider;
     private View mAppHeaderDivider_1;
-
-    private SimpleDateFormat mSinaWeiboDateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", new DateFormatSymbols(Locale.US));
-    private SimpleDateFormat mSimpleDateFormat;
 
     private int pageIndex = 0;
 
@@ -94,8 +89,6 @@ public class MainActivity extends AdapterActivity<StatuInfo>
         setInfomationList();
 
         UMFeedbackService.enableNewReplyNotification(this, NotificationType.NotificationBar);
-
-        mSimpleDateFormat = new SimpleDateFormat("MM-dd hh:mm");
 
         listView .setOnCreateContextMenuListener(this);
 
@@ -193,6 +186,7 @@ public class MainActivity extends AdapterActivity<StatuInfo>
                 statuInfo.pic_thumbnail = statuList.getJSONObject(i).optString("pic_thumbnail");
                 statuInfo.pic_middle = statuList.getJSONObject(i).optString("pic_middle");
                 statuInfo.pic_original = statuList.getJSONObject(i).optString("pic_original");
+                statuInfo.from = statuList.getJSONObject(i).optString("from");
                 listData.add(statuInfo);
             }
             if (pageIndex == 0) {
@@ -252,33 +246,22 @@ public class MainActivity extends AdapterActivity<StatuInfo>
             view = LayoutInflater.from(getApplicationContext()).inflate(R.layout.main_list_item, null);
         }
 
-        mItemAvatar = (SmartImageView) view.findViewById(R.id.item_avatar);
-        mItemAvatar.setImageUrl(listData.get(position).avatar, R.drawable.icon, 0);
-
         mItemName = (TextView) view.findViewById(R.id.item_name);
         mItemName.setText(listData.get(position).name);
         mItemName.getPaint().setFakeBoldText(true);
 
-        mItemDate = (TextView) view.findViewById(R.id.item_date);
+        mItemMonth = (TextView) view.findViewById(R.id.item_month);
+        mItemDay = (TextView) view.findViewById(R.id.item_day);
         String dateString = listData.get(position).created;
         if (dateString != null && !"".equals(dateString)) {
             try {
-                Date date = mSinaWeiboDateFormat.parse(dateString);
-                int second = (int)(System.currentTimeMillis() - date.getTime())/1000;
-                if (second > 3600 && second <= 86400 ) {
-                    mItemDate.setText(second/3600 + "小时前");
-                } else if (second > 59 && second <= 3600) {
-                    mItemDate.setText(second/60 + "分钟前");
-                } else if (second <= 59) {
-                    mItemDate.setText(second + "秒前");
-                } else {
-                    mItemDate.setText(mSimpleDateFormat.format(date));
-                }
-            } catch (ParseException e) {
+                setMonthAndDay(dateString.split("-")[1], dateString.split("-")[2]);
+            } catch (Exception e) {
                 e.printStackTrace();
+                setMonthAndDay(null, null);
             }
         } else {
-            mItemDate.setText("");
+            setMonthAndDay(null, null);
         }
 
         mItemText = (TextView) view.findViewById(R.id.item_text);
@@ -292,7 +275,24 @@ public class MainActivity extends AdapterActivity<StatuInfo>
             mItemThumbnail.setVisibility(View.GONE);
         }
 
+        mItemFrom = (TextView) view.findViewById(R.id.item_from);
+        if (listData.get(position).from != null && !"".equals(listData.get(position).from)) {
+            mItemFrom.setText("来自:" + listData.get(position).from);
+        } else {
+            mItemFrom.setText("来自:新浪");
+        }
         return view;
+    }
+
+    private void setMonthAndDay(String mouth, String day) {
+        if (mouth != null) {
+            mItemMonth.setText(mouth + "月");
+            mItemDay.setText(day);
+        } else {
+            Calendar cal = Calendar.getInstance();
+            mItemMonth.setText(cal.get(Calendar.MONTH) + "月");
+            mItemDay.setText(cal.get(Calendar.DAY_OF_MONTH) + "");
+        }
     }
 
     @Override

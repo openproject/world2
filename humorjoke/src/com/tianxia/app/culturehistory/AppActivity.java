@@ -77,4 +77,10 @@ public class AppActivity extends MainActivity implements UpdatePointsNotifier{
     @Override
     public void getUpdatePointsFailed(String error) {
     }
+
+    @Override
+    public void onDestroy() {
+        AppConnect.getInstance(this).finalize();
+        super.onDestroy();
+    }
 }
