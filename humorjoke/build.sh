@@ -2,8 +2,8 @@
 basedir=$(cd "$(dirname "$0")";pwd)
 cd $basedir
 
-#markets="google appchina waps gfan 91 hiapk goapk mumayi eoe nduo feiliu crossmo huawei qq 3g 360 baidu sohu 163 samsung coolmart meizu moto xiaomi lenovo nearme official dev"
-markets="google dev"
+markets="google appchina waps gfan 91 hiapk goapk mumayi eoe nduo feiliu crossmo huawei qq 3g 360 baidu sohu 163 samsung coolmart meizu moto xiaomi lenovo nearme official dev"
+#markets="google dev"
 for market in $markets
 do
     echo packaging healthworld_1.0_beta_$market.apk ...
