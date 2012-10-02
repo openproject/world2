@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff">
+    <include android:layout_width="fill_parent"
+        android:layout_height="@dimen/app_header_height"
+        layout="@layout/app_header" />
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip"
+                android:layout_marginBottom="0dip">
+                <TextView android:textSize="15.0dip"
+                    android:textColor="#ff737373"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3.0dip"
+                    android:layout_marginBottom="10.0dip"
+                    android:text="广告设置"/>
+                <RelativeLayout android:id="@+id/setting_item_ad"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:clickable="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dip"
+                    android:background="@drawable/selector_item_top">
+                    <ImageView android:id="@+id/setting_item_ad_arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="12.0dip"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentTop="true"
+                        android:src="@drawable/setting_arrow" />
+                    <TextView android:id="@+id/setting_item_ad_credits"
+                        android:layout_toLeftOf="@id/setting_item_ad_arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:layout_centerVertical="true"
+                        android:textColor="#ffffffff"
+                        android:background="@drawable/app_count_bg"/>
+                    <TextView android:id="@+id/setting_item_ad_title"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="赚积分,去广告"
+                        android:layout_marginLeft="10.0dip"
+                        android:layout_marginTop="8.0dip"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        style="@style/app_setting_list_item_title"/>
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="积分达到25即可,达到500,可永久去广告!"
+                        android:layout_weight="1.0"
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="10.0dip"
+                        android:layout_marginBottom="8.0dip"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentBottom="true"
+                        style="@style/app_setting_list_item_description"/>
+                </RelativeLayout>
+                <TextView android:background="#ffd2d2d4" android:layout_width="fill_parent" android:layout_height="1.0px"
+                    android:visibility="gone"/>
+                <LinearLayout android:id="@+id/setting_item_donate"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:clickable="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45.0dip"
+                    android:background="@drawable/selector_item_single">
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="捐赠"
+                        android:layout_marginLeft="10.0dip"
+                        android:layout_weight="1.0"
+                        style="@style/app_setting_list_item_title"/>
+                    <TextView
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10.0dip"
+                        android:text="1.6.5"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="12.0dip"
+                        android:src="@drawable/setting_arrow" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip"
+                android:layout_marginTop="5dip"
+                android:layout_marginBottom="0dip">
+                <TextView android:textSize="15.0dip"
+                    android:textColor="#ff737373"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3.0dip"
+                    android:layout_marginBottom="10.0dip"
+                    android:text="软件设置"/>
+                <LinearLayout android:id="@+id/setting_item_share"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:clickable="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45.0dip"
+                    android:background="@drawable/selector_item_top">
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="分享"
+                        android:layout_weight="1.0"
+                        android:layout_marginLeft="10.0dip"
+                        style="@style/app_setting_list_item_title"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="12.0dip"
+                        android:src="@drawable/setting_arrow" />
+                </LinearLayout>
+                <TextView android:background="#ffd2d2d4" android:layout_width="fill_parent" android:layout_height="1.0px"/>
+                <LinearLayout android:id="@+id/setting_item_mark"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:clickable="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45.0dip"
+                    android:background="@drawable/selector_item_middle">
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="评分"
+                        android:layout_marginLeft="10.0dip"
+                        android:layout_weight="1.0"
+                        style="@style/app_setting_list_item_title"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="12.0dip"
+                        android:src="@drawable/setting_arrow" />
+                </LinearLayout>
+                <TextView android:background="#ffd2d2d4" android:layout_width="fill_parent" android:layout_height="1.0px"/>
+                <LinearLayout android:id="@+id/setting_item_upgrade"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:clickable="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45.0dip"
+                    android:background="@drawable/selector_item_bottom">
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="检查新版本"
+                        android:layout_marginLeft="10.0dip"
+                        android:layout_weight="1.0"
+                        style="@style/app_setting_list_item_title"/>
+                    <TextView
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10.0dip"
+                        android:text="1.6.5"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="12.0dip"
+                        android:src="@drawable/setting_arrow" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dip"
+                android:layout_marginTop="10dip"
+                android:layout_marginBottom="0dip">
+                <TextView android:textSize="15.0dip"
+                    android:textColor="#ff737373"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3.0dip"
+                    android:layout_marginBottom="10.0dip"
+                    android:text="其它"/>
+                <LinearLayout android:id="@+id/setting_item_suggest"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:clickable="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45.0dip"
+                    android:background="@drawable/selector_item_top">
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="意见反馈"
+                        android:layout_weight="1.0"
+                        android:layout_marginLeft="10.0dip"
+                        style="@style/app_setting_list_item_title"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="12.0dip"
+                        android:src="@drawable/setting_arrow" />
+                </LinearLayout>
+                <TextView android:background="#ffd2d2d4" android:layout_width="fill_parent" android:layout_height="1.0px"/>
+                <LinearLayout android:id="@+id/setting_item_about"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:clickable="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45.0dip"
+                    android:background="@drawable/selector_item_bottom">
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="关于我们"
+                        android:layout_marginLeft="10.0dip"
+                        android:layout_weight="1.0"
+                        style="@style/app_setting_list_item_title"/>
+                    <TextView
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10.0dip"
+                        android:text="1.6.5"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="12.0dip"
+                        android:src="@drawable/setting_arrow" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+
