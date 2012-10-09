@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_id">startalk</string>
+    <string name="app_name">星座星语</string>
+
+    <string name="setting_about_subject">玩转英语\nPlay English</string>
+    <string name="setting_about_description">幽默笑话，让每天都过的开心快乐！</string>
+
+    <string name="setting_share_app_subject">向你分享一个精彩应用《幽默笑话》</string>
+    <string name="setting_share_app_body">向你分享一个精彩应用《幽默笑话》,让您每天都过的开心快乐！下载地址:</string>
+</resources>
