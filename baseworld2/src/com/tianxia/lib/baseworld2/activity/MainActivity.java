@@ -243,7 +243,7 @@ public class MainActivity extends AdapterActivity<StatuInfo>
     protected View getView(int position, View convertView) {
         View view = convertView;
         if(view == null){
-            view = LayoutInflater.from(getApplicationContext()).inflate(R.layout.main_list_item, null);
+            view = LayoutInflater.from(this).inflate(R.layout.main_list_item, null);
         }
 
         mItemName = (TextView) view.findViewById(R.id.item_name);
