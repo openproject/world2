@@ -96,7 +96,7 @@ public abstract class AdapterActivity<T> extends BaseActivity {
         }
     }
 
-    //show loading view when init and loading data from network
+    // show loading view when init and loading data from network
     protected void showLoadingEmptyView() {
         if (mEmptyFailView == null) {
             mEmptyLoadingView = EmptyViewUtils.createLoadingView(this);
@@ -106,13 +106,20 @@ public abstract class AdapterActivity<T> extends BaseActivity {
         listView.setEmptyView(mEmptyLoadingView);
     }
 
-    //show fail view when loading data fail
+    // hide loading view
+    protected void hideLoadingEmptyView() {
+        mEmptyLoadingView.setVisibility(View.GONE);
+    }
+
+    // show fail view when loading data fail
     protected void showFailEmptyView() {
         if (mEmptyFailView == null) {
             mEmptyFailView = EmptyViewUtils.createFailView(this);
         }
         ((ViewGroup)listView.getParent()).removeView(mEmptyLoadingView);
-        ((ViewGroup)listView.getParent()).addView(mEmptyFailView);
-        listView.setEmptyView(mEmptyFailView);
+        if (mEmptyLoadingView.getParent() == null) {
+            ((ViewGroup)listView.getParent()).addView(mEmptyFailView);
+            listView.setEmptyView(mEmptyFailView);
+        } 
     }
 }

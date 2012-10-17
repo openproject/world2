@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="nav_value">
+        <item>index</item>
+        <item>http://www.qiushibaike.com</item>
+        <item>http://joke.sina.cn</item>
+        <item><![CDATA[http://info.3g.qq.com/g/s?sid=00&aid=template&tid=joke_h&s_it=1]]></item>
+        <item>http://m.sohu.com/c/1393/?_once_=000025_top_xiaohua_v3</item>
+        <item>http://wap.jokeji.cn/</item>
+        <item>http://m.pengfu.com/</item>
+        <item>http://m.lengxiaohua.com/</item>
+        <item>http://m.haha365.com/</item>
+    </string-array>
+    <string-array name="nav_text">
+        <item>精选</item>
+        <item>糗百</item>
+        <item>新浪</item>
+        <item>腾讯</item>
+        <item>搜狐</item>
+        <item>笑话集</item>
+        <item>捧腹</item>
+        <item>冷笑话</item>
+        <item>中文幽默王</item>
+    </string-array>
+</resources>

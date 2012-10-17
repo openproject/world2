@@ -7,6 +7,10 @@
     <include android:layout_width="fill_parent"
         android:layout_height="@dimen/app_header_height"
         layout="@layout/app_header" />
+    <include android:id="@+id/app_nav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        layout="@layout/app_nav" />
     <include android:id="@+id/app_notice"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/app_notice_height"
@@ -25,6 +29,20 @@
             android:cacheColorHint="#00000000"
             android:divider="@drawable/app_divider_h_gray">
         </com.tianxia.lib.baseworld2.widget.RefreshListView>
+	<ProgressBar android:id="@+id/main_webview_progress"
+	    android:layout_width="fill_parent"
+	    android:layout_height="2dip"
+	    style="?android:attr/progressBarStyleHorizontal"
+	    android:max="100"
+	    android:visibility="gone"
+	    android:layout_below="@id/main_list">
+	</ProgressBar>
+	<WebView android:id="@+id/main_webview"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+            android:layout_above="@id/ad_container"
+	    android:layout_below="@id/main_webview_progress">
+	</WebView>
     </RelativeLayout>
 </LinearLayout>
 

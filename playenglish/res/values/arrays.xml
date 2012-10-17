@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="nav_value">
+        <item>index</item>
+        <item>http://wap.iciba.com/</item>
+        <item>http://wap.youdao.com/</item>
+        <item>http://m.kekenet.com/</item>
+        <item>http://m.24en.com/</item>
+        <item>http://m.tp230.cn/</item>
+    </string-array>
+    <string-array name="nav_text">
+        <item>精选</item>
+        <item>爱词霸</item>
+        <item>有道</item>
+        <item>可可英语</item>
+        <item>爱思网</item>
+        <item>头牌</item>
+    </string-array>
+</resources>

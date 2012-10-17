@@ -17,6 +17,7 @@ import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Gravity;
 import android.view.ViewGroup;
 import android.view.View.OnCreateContextMenuListener;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
@@ -26,6 +27,9 @@ import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.webkit.WebView;
+import android.webkit.WebChromeClient;
+import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,6 +56,8 @@ import java.io.File;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -59,6 +65,11 @@ import org.json.JSONObject;
 
 public class MainActivity extends AdapterActivity<StatuInfo>
     implements RefreshListener,View.OnClickListener {
+
+    protected ViewGroup mNavContainerView;
+
+    private ProgressBar mWebViewProgressBar;
+    private WebView mWebView;
 
     private TextView mItemName;
     private TextView mItemDate;
@@ -95,8 +106,28 @@ public class MainActivity extends AdapterActivity<StatuInfo>
         mAdContainer = (LinearLayout) findViewById(R.id.ad_container);
         displayAd();
 
+        displayNotice();
+    }
+
+    public static final String SHARE_NOTICE = "notice";
+    public static final String SHARE_NOTICE_LAST_TIME = "notice_time";
+    private void displayNotice() {
+        mAppNoticeView = findViewById(R.id.app_notice);
         if (BaseApplication.isForbiddenAdWall()) {
-            mAppNoticeView = findViewById(R.id.app_notice);
+            mAppNoticeView.setVisibility(View.GONE);
+            return;
+        }
+        long last_time = PreferencesUtils.getLongPreference(this,
+                    SHARE_NOTICE,
+                    SHARE_NOTICE_LAST_TIME,
+                    0);
+        if (System.currentTimeMillis() - last_time > 1000*60*60*24) {
+            mAppNoticeView.setVisibility(View.VISIBLE);
+            PreferencesUtils.setLongPreference(this,
+                    SHARE_NOTICE,
+                    SHARE_NOTICE_LAST_TIME,
+                    System.currentTimeMillis());                               
+        } else {
             mAppNoticeView.setVisibility(View.GONE);
         }
     }
@@ -226,7 +257,82 @@ public class MainActivity extends AdapterActivity<StatuInfo>
         mAppHeaderMenu_1.setOnClickListener(this);
         ((RefreshListView) listView).setOnRefreshListener(this);
 
+	mWebViewProgressBar = (ProgressBar) findViewById(R.id.main_webview_progress);
+        mWebView = (WebView) findViewById(R.id.main_webview);
+
+        mNavContainerView = (ViewGroup) findViewById(R.id.nav_container);
+        initNavs();
+
         showLoadingEmptyView();
+    }
+
+    private String[] mNavValue;
+    private String[] mNavString;
+    private List<Button> mNavButtons;
+    protected void initNavs() {
+        mNavValue = getResources().getStringArray(R.array.nav_value);
+        mNavString = getResources().getStringArray(R.array.nav_text);
+
+        mNavButtons = new ArrayList<Button>();
+        for (int i = 0; i < mNavString.length; i++) {
+           final Button textView = new Button(this);
+           textView.setTextColor(getResources().getColor(R.color.app_nav_text_color));
+           textView.setText(mNavString[i]);
+           textView.setTag(mNavValue[i]);
+           textView.setGravity(Gravity.CENTER);
+           textView.setPadding(12, 8, 12, 8);
+           if (i == 0) {
+               textView.setBackgroundResource(R.drawable.app_nav_selected);
+               textView.setTextSize(18);
+           } else {
+               textView.setBackgroundResource(0);
+               textView.setTextSize(15);
+           }
+           textView.setOnClickListener(new View.OnClickListener() {
+               public void onClick(View v) {
+                   for (Button btn : mNavButtons) {
+                        btn.setBackgroundResource(0);
+                        btn.setTextSize(15);
+                   }
+                   if (!"index".equals(textView.getTag())) {
+                       hideLoadingEmptyView();
+                       listView.setVisibility(View.GONE);
+                       mWebViewProgressBar.setVisibility(View.VISIBLE);
+                       mWebView.setWebChromeClient(new WebChromeClient() {  
+                           public void onProgressChanged(WebView view, int progress) {  
+                               mWebViewProgressBar.setProgress(progress);
+                               if (progress == 100) {
+                                   mWebViewProgressBar.setVisibility(View.GONE);
+                               }
+                           }  
+                       }); 
+                       mWebView.setWebViewClient(new WebViewClient(){
+                           public boolean shouldOverrideUrlLoading(final WebView view, final String url) {
+                               mWebViewProgressBar.setVisibility(View.VISIBLE);
+                               mWebView.loadUrl(url);
+                               return true;
+                           }
+                       });
+
+                       mWebView.loadUrl(String.valueOf(v.getTag()));
+                   } else {
+                       listView.setVisibility(View.VISIBLE);
+                   }
+                   v.setBackgroundResource(R.drawable.app_nav_selected);
+                   ((TextView)v).setTextSize(18);
+               }
+           });
+           mNavButtons.add(textView);
+        }
+
+        LinearLayout.LayoutParams lp =
+            new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.FILL_PARENT);
+        lp.gravity = Gravity.CENTER;
+        for (Button btn : mNavButtons) {
+            mNavContainerView.addView(btn,lp);
+        }
     }
 
     @Override
@@ -235,6 +341,17 @@ public class MainActivity extends AdapterActivity<StatuInfo>
             //setting
             gotoSetting();
         } else if ((v == mAppHeaderMenu_1)) {
+		listView.setVisibility(View.GONE);
+		mWebViewProgressBar.setVisibility(View.VISIBLE);
+		mWebView.setWebChromeClient(new WebChromeClient() {  
+			public void onProgressChanged(WebView view, int progress) {  
+			    mWebViewProgressBar.setProgress(progress);
+			    if (progress == 100) {
+				mWebViewProgressBar.setVisibility(View.GONE);
+			    }
+			}  
+		}); 
+		mWebView.loadUrl("http://joke.sina.cn");
             Toast.makeText(this, "正在努力开发中，敬请期待。", Toast.LENGTH_SHORT).show();
         }
     }
