@@ -55,14 +55,12 @@ public class AppDetailsActivity extends DetailsActivity implements UpdatePointsN
         } else {
 
             long last_time = PreferencesUtils.getLongPreference(this,
-                    AppApplication.SHARE_CREDITS,
                     AppApplication.SHARE_CREDITS_LAST_TIME,
                     0);
             if (System.currentTimeMillis() - last_time > 1000*60*60*24) {
                 //spent 25 credits will keep no ad one day
                 AppConnect.getInstance(this).spendPoints(AppApplication.NO_AD_SPEND_PER_DAY, this);
                 PreferencesUtils.setLongPreference(this,
-                        AppApplication.SHARE_CREDITS,
                         AppApplication.SHARE_CREDITS_LAST_TIME,
                         System.currentTimeMillis());
             }

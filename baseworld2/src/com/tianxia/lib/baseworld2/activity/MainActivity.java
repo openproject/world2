@@ -109,7 +109,6 @@ public class MainActivity extends AdapterActivity<StatuInfo>
         displayNotice();
     }
 
-    public static final String SHARE_NOTICE = "notice";
     public static final String SHARE_NOTICE_LAST_TIME = "notice_time";
     private void displayNotice() {
         mAppNoticeView = findViewById(R.id.app_notice);
@@ -118,13 +117,11 @@ public class MainActivity extends AdapterActivity<StatuInfo>
             return;
         }
         long last_time = PreferencesUtils.getLongPreference(this,
-                    SHARE_NOTICE,
                     SHARE_NOTICE_LAST_TIME,
                     0);
         if (System.currentTimeMillis() - last_time > 1000*60*60*24) {
             mAppNoticeView.setVisibility(View.VISIBLE);
             PreferencesUtils.setLongPreference(this,
-                    SHARE_NOTICE,
                     SHARE_NOTICE_LAST_TIME,
                     System.currentTimeMillis());                               
         } else {
@@ -269,6 +266,7 @@ public class MainActivity extends AdapterActivity<StatuInfo>
     private String[] mNavValue;
     private String[] mNavString;
     private List<Button> mNavButtons;
+    private int mNavClick = 0;
     protected void initNavs() {
         mNavValue = getResources().getStringArray(R.array.nav_value);
         mNavString = getResources().getStringArray(R.array.nav_text);
@@ -290,6 +288,7 @@ public class MainActivity extends AdapterActivity<StatuInfo>
            }
            textView.setOnClickListener(new View.OnClickListener() {
                public void onClick(View v) {
+                   mNavClick = 0;
                    for (Button btn : mNavButtons) {
                         btn.setBackgroundResource(0);
                         btn.setTextSize(15);
@@ -308,6 +307,7 @@ public class MainActivity extends AdapterActivity<StatuInfo>
                        }); 
                        mWebView.setWebViewClient(new WebViewClient(){
                            public boolean shouldOverrideUrlLoading(final WebView view, final String url) {
+                               mNavClick++;
                                mWebViewProgressBar.setVisibility(View.VISIBLE);
                                mWebView.loadUrl(url);
                                return true;
@@ -524,4 +524,15 @@ public class MainActivity extends AdapterActivity<StatuInfo>
 
     protected void gotoDetails(int position) {
     }
+
+    @Override
+    public void onBackPressed() {
+        if (mNavClick > 0) {
+            mNavClick--;
+            mWebView.goBack();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
 }

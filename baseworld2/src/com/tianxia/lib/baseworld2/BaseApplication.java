@@ -95,7 +95,7 @@ public abstract class BaseApplication extends Application {
     }
 
     public void checkDomain(final String domain, final boolean stop){
-        mDomain = PreferencesUtils.getStringPreference(getApplicationContext(), DOMAIN, DOMAIN_URL, mDomain);
+        mDomain = PreferencesUtils.getStringPreference(getApplicationContext(), DOMAIN_URL, mDomain);
         String cacheConfigString = ConfigCache.getUrlCache(domain + "host.json");
         if (cacheConfigString != null) {
             updateDomain(cacheConfigString);
@@ -133,7 +133,7 @@ public abstract class BaseApplication extends Application {
             String domain = appreciateConfig.optString("domain");
             if (domain != null && !"".equals(domain)) {
                 BaseApplication.mDomain = domain;
-                PreferencesUtils.setStringPreferences(getApplicationContext(), DOMAIN, DOMAIN_URL, domain);
+                PreferencesUtils.setStringPreferences(getApplicationContext(), DOMAIN_URL, domain);
             }
         } catch (JSONException e) {
             e.printStackTrace();
