@@ -28,7 +28,6 @@ import org.json.JSONObject;
 public abstract class BaseApplication extends Application {
 
     public static BaseSQLiteHelper mSQLiteHelper;
-    public static final String DOMAIN = "domain";
     public static final String DOMAIN_URL = "url";
     public static String mDomain = "http://www.kaiyuanxiangmu.com/";
     public static String mBakeDomain = "http://1.kaiyuanxiangmu.sinaapp.com/";

@@ -341,17 +341,6 @@ public class MainActivity extends AdapterActivity<StatuInfo>
             //setting
             gotoSetting();
         } else if ((v == mAppHeaderMenu_1)) {
-		listView.setVisibility(View.GONE);
-		mWebViewProgressBar.setVisibility(View.VISIBLE);
-		mWebView.setWebChromeClient(new WebChromeClient() {  
-			public void onProgressChanged(WebView view, int progress) {  
-			    mWebViewProgressBar.setProgress(progress);
-			    if (progress == 100) {
-				mWebViewProgressBar.setVisibility(View.GONE);
-			    }
-			}  
-		}); 
-		mWebView.loadUrl("http://joke.sina.cn");
             Toast.makeText(this, "正在努力开发中，敬请期待。", Toast.LENGTH_SHORT).show();
         }
     }

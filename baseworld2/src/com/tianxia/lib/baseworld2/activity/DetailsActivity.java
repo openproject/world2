@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.tianxia.lib.baseworld2.utils.PreferencesUtils;
 
 import com.tianxia.lib.baseworld2.BaseApplication;
 import com.tianxia.lib.baseworld2.cache.ConfigCache;
@@ -66,12 +67,27 @@ public class DetailsActivity extends BaseActivity
         mAdContainer = (LinearLayout) findViewById(R.id.ad_container);
         displayAd();
 
+        displayNotice();
+    }
+
+    private void displayNotice() {
+        mAppNoticeView = findViewById(R.id.app_notice);
         if (BaseApplication.isForbiddenAdWall()) {
-            mAppNoticeView = findViewById(R.id.app_notice);
+            mAppNoticeView.setVisibility(View.GONE);
+            return;
+        }
+        long last_time = PreferencesUtils.getLongPreference(this,
+                    MainActivity.SHARE_NOTICE_LAST_TIME,
+                    0);
+        if (System.currentTimeMillis() - last_time > 1000*60*60*24) {
+            mAppNoticeView.setVisibility(View.VISIBLE);
+            PreferencesUtils.setLongPreference(this,
+                    MainActivity.SHARE_NOTICE_LAST_TIME,
+                    System.currentTimeMillis());                               
+        } else {
             mAppNoticeView.setVisibility(View.GONE);
         }
     }
-
     protected void displayAd() {
     }
 
