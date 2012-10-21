@@ -6,7 +6,7 @@
     <property name="apk-version" value="latest" />
     <property name="apk-market" value="dev" />
 
-    <property name="android-jar" value="/home/jayfeng/Tools/android-sdk-linux/platforms/android-10/android.jar" />
+    <property name="android-jar" value="/home/jubuntu/tools/android-sdk-linux/platforms/android-10/android.jar" />
 
     <target name="init">
         <echo>start initing ... </echo>
@@ -121,10 +121,19 @@
             <arg value="-keypass" />
 	    <arg value="${keypass}" />
             <arg value="-signedjar" />
-            <arg value="build/${apk-version}/${apk-name}_${apk-version}_${apk-market}.apk" />
+            <arg value="bin/unzipalgin.apk" />
             <arg value="bin/unsigned.apk" />
 	    <arg value="${alias}" />
         </exec>
+
+	<echo>zipalign the product apk...</echo>
+        <exec executable="zipalign">
+            <arg value="-f" />
+            <arg value="-v" />
+            <arg value="4" />
+            <arg value="bin/unzipalgin.apk" />
+            <arg value="build/${apk-version}/${apk-name}_${apk-version}_${apk-market}.apk" />
+	</exec>
 
         <echo>done.</echo>
     </target>
