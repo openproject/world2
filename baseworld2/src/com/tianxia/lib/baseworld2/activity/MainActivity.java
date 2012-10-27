@@ -1,67 +1,55 @@
 package com.tianxia.lib.baseworld2.activity;
 
-import android.app.AlertDialog;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-
 import android.os.Bundle;
 import android.os.Environment;
-
 import android.text.ClipboardManager;
-
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Gravity;
 import android.view.ViewGroup;
-import android.view.View.OnCreateContextMenuListener;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-
+import android.webkit.WebChromeClient;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.webkit.WebView;
-import android.webkit.WebChromeClient;
-import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.feedback.NotificationType;
 import com.feedback.UMFeedbackService;
-
 import com.tianxia.lib.baseworld2.BaseApplication;
-import com.tianxia.lib.baseworld2.cache.ConfigCache;
 import com.tianxia.lib.baseworld2.R;
+import com.tianxia.lib.baseworld2.cache.ConfigCache;
 import com.tianxia.lib.baseworld2.sync.http.AsyncHttpClient;
 import com.tianxia.lib.baseworld2.sync.http.AsyncHttpResponseHandler;
 import com.tianxia.lib.baseworld2.upgrade.AppUpgradeService;
 import com.tianxia.lib.baseworld2.utils.DownloadUtils;
-import com.tianxia.lib.baseworld2.utils.EmptyViewUtils;
 import com.tianxia.lib.baseworld2.utils.FileUtils;
 import com.tianxia.lib.baseworld2.utils.PreferencesUtils;
 import com.tianxia.lib.baseworld2.utils.StringUtils;
 import com.tianxia.lib.baseworld2.widget.RefreshListView;
 import com.tianxia.lib.baseworld2.widget.RefreshListView.RefreshListener;
 import com.tianxia.widget.image.SmartImageView;
-
-import java.io.File;
-
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.ArrayList;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class MainActivity extends AdapterActivity<StatuInfo>
     implements RefreshListener,View.OnClickListener {
@@ -72,7 +60,6 @@ public class MainActivity extends AdapterActivity<StatuInfo>
     private WebView mWebView;
 
     private TextView mItemName;
-    private TextView mItemDate;
     private TextView mItemText;
     private SmartImageView mItemThumbnail;
     private TextView mItemFrom;

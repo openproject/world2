@@ -1,17 +1,13 @@
 package com.tianxia.app.playenglish;
 
-import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 
-import android.os.Bundle;
-
 import com.tianxia.lib.baseworld2.activity.DetailsActivity;
-import com.tianxia.lib.baseworld2.BaseApplication;
-
+import com.tianxia.lib.baseworld2.utils.PreferencesUtils;
 import com.waps.AdView;
 import com.waps.AppConnect;
 import com.waps.UpdatePointsNotifier;
-import com.tianxia.lib.baseworld2.utils.PreferencesUtils;
 
 public class AppDetailsActivity extends DetailsActivity implements UpdatePointsNotifier{
 
@@ -27,10 +23,6 @@ public class AppDetailsActivity extends DetailsActivity implements UpdatePointsN
         //获取积分
         AppConnect.getInstance(this).getPoints(this);
     }
-
-    private static final int NO_AD_SPEND_PER_DAY = 25;
-    private static final String SHARE_CREDITS = "credits";
-    private static final String SHARE_CREDITS_LAST_TIME = "credits_time";
 
     //获取成功
     @Override

@@ -3,15 +3,11 @@ package com.tianxia.app.startalk;
 import android.content.Intent;
 import android.view.View;
 
-import android.os.Bundle;
-
 import com.tianxia.lib.baseworld2.activity.MainActivity;
-import com.tianxia.lib.baseworld2.BaseApplication;
-
+import com.tianxia.lib.baseworld2.utils.PreferencesUtils;
 import com.waps.AdView;
 import com.waps.AppConnect;
 import com.waps.UpdatePointsNotifier;
-import com.tianxia.lib.baseworld2.utils.PreferencesUtils;
 
 public class AppActivity extends MainActivity implements UpdatePointsNotifier{
 

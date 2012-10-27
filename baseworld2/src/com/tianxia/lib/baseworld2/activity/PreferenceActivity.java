@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import android.os.Bundle;
 import android.widget.LinearLayout;
 
 public abstract class PreferenceActivity extends BaseActivity {

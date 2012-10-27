@@ -1,31 +1,20 @@
 package com.tianxia.lib.baseworld2.widget;
 
 import android.content.Context;
-
 import android.graphics.Bitmap;
 import android.graphics.PixelFormat;
-
 import android.util.AttributeSet;
-
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-
-import android.widget.Adapter;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
 
 import com.tianxia.lib.baseworld2.R;
-
-import java.util.List;
 
 /**
  * 拖拽ListView

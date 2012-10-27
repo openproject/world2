@@ -1,14 +1,11 @@
 package com.tianxia.app.culturehistory;
 
 import android.content.Intent;
-
 import android.os.Bundle;
 
 import com.juzi.main.AdView;
 import com.juzi.main.AppConnect;
-
 import com.tianxia.lib.baseworld2.activity.MainActivity;
-import com.tianxia.lib.baseworld2.BaseApplication;
 
 public class AppActivity extends MainActivity {
 

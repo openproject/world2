@@ -1,29 +1,22 @@
 package com.tianxia.lib.baseworld2;
 
-import android.app.Application;
+import java.io.File;
 
-import android.content.Context;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.app.Application;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-
 import android.os.Environment;
 
 import com.tianxia.lib.baseworld2.cache.ConfigCache;
 import com.tianxia.lib.baseworld2.db.BaseSQLiteHelper;
-import com.tianxia.lib.baseworld2.R;
 import com.tianxia.lib.baseworld2.sync.http.AsyncHttpClient;
 import com.tianxia.lib.baseworld2.sync.http.AsyncHttpResponseHandler;
 import com.tianxia.lib.baseworld2.utils.NetworkUtils;
 import com.tianxia.lib.baseworld2.utils.PreferencesUtils;
-
-import java.io.File;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public abstract class BaseApplication extends Application {
 

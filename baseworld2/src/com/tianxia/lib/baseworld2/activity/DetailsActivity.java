@@ -1,32 +1,19 @@
 package com.tianxia.lib.baseworld2.activity;
 
-import android.content.Intent;
 import android.content.Context;
-
+import android.content.Intent;
 import android.os.Bundle;
-
 import android.text.ClipboardManager;
-
 import android.view.View;
-
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tianxia.lib.baseworld2.utils.PreferencesUtils;
 
 import com.tianxia.lib.baseworld2.BaseApplication;
-import com.tianxia.lib.baseworld2.cache.ConfigCache;
-import com.tianxia.lib.baseworld2.db.BaseSQLiteHelper;
 import com.tianxia.lib.baseworld2.R;
+import com.tianxia.lib.baseworld2.utils.PreferencesUtils;
 import com.tianxia.widget.image.SmartImageView;
-
-import java.text.DateFormatSymbols;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
-import java.util.Date;
-import java.util.Locale;
 
 public class DetailsActivity extends BaseActivity
     implements View.OnClickListener {

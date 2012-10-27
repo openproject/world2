@@ -3,10 +3,7 @@ package com.tianxia.app.humorjoke;
 import android.content.Intent;
 import android.view.View;
 
-import android.os.Bundle;
-
 import com.tianxia.lib.baseworld2.activity.MainActivity;
-import com.tianxia.lib.baseworld2.BaseApplication;
 
 import com.waps.AdView;
 import com.waps.AppConnect;
