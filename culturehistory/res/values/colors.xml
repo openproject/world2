@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="app_title_white">#fff3f7f8</color>
-    <color name="app_title_white_shadow">#33000000</color>
-    <color name="app_header_top_line">#ff57abe2</color>
-    <color name="app_header_bottom_line">#ff01578d</color>
-    <color name="app_notice_gray">#ff646870</color>
-</resources>
