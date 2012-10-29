@@ -45,6 +45,7 @@ import com.tianxia.lib.baseworld2.sync.http.AsyncHttpResponseHandler;
 import com.tianxia.lib.baseworld2.upgrade.AppUpgradeService;
 import com.tianxia.lib.baseworld2.utils.DownloadUtils;
 import com.tianxia.lib.baseworld2.utils.FileUtils;
+import com.tianxia.lib.baseworld2.utils.NetworkUtils;
 import com.tianxia.lib.baseworld2.utils.PreferencesUtils;
 import com.tianxia.lib.baseworld2.utils.StringUtils;
 import com.tianxia.lib.baseworld2.widget.RefreshListView;
@@ -122,6 +123,13 @@ public class MainActivity extends AdapterActivity<StatuInfo>
             showInfomationList(cacheConfigString);
             checkNewVersion();
         } else {
+            // if network is unavaliable, just show fail at once
+            if (BaseApplication.mNetWorkState == NetworkUtils.NETWORN_NONE) {
+                listView.setAdapter(null);
+                showFailEmptyView();
+                return;
+            }
+
             AsyncHttpClient client = new AsyncHttpClient();
             client.get(BaseApplication.mServerLatestUrl, new AsyncHttpResponseHandler(){
 
@@ -241,7 +249,7 @@ public class MainActivity extends AdapterActivity<StatuInfo>
         mAppHeaderMenu_1.setOnClickListener(this);
         ((RefreshListView) listView).setOnRefreshListener(this);
 
-	mWebViewProgressBar = (ProgressBar) findViewById(R.id.main_webview_progress);
+        mWebViewProgressBar = (ProgressBar) findViewById(R.id.main_webview_progress);
         mWebView = (WebView) findViewById(R.id.main_webview);
 
         mNavContainerView = (ViewGroup) findViewById(R.id.nav_container);
