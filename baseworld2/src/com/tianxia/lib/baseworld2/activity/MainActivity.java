@@ -35,8 +35,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.feedback.NotificationType;
-import com.feedback.UMFeedbackService;
 import com.tianxia.lib.baseworld2.BaseApplication;
 import com.tianxia.lib.baseworld2.R;
 import com.tianxia.lib.baseworld2.cache.ConfigCache;
@@ -51,6 +49,8 @@ import com.tianxia.lib.baseworld2.utils.StringUtils;
 import com.tianxia.lib.baseworld2.widget.RefreshListView;
 import com.tianxia.lib.baseworld2.widget.RefreshListView.RefreshListener;
 import com.tianxia.widget.image.SmartImageView;
+import com.umeng.fb.NotificationType;
+import com.umeng.fb.UMFeedbackService;
 
 public class MainActivity extends AdapterActivity<StatuInfo>
     implements RefreshListener,View.OnClickListener {
@@ -438,6 +438,10 @@ public class MainActivity extends AdapterActivity<StatuInfo>
 
     @Override
     public Object refreshing() {
+        if (BaseApplication.mNetWorkState == NetworkUtils.NETWORN_NONE) {
+            return null;
+        }
+
         String result = null;
         if (BaseApplication.mSdcardDataDir == null) {
             BaseApplication.mSdcardDataDir = Environment.getExternalStorageDirectory().getPath() +  "/culturehistory/config/";

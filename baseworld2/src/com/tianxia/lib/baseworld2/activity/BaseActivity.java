@@ -1,9 +1,9 @@
 package com.tianxia.lib.baseworld2.activity;
 
-import com.mobclick.android.MobclickAgent;
-
 import android.app.Activity;
 import android.os.Bundle;
+
+import com.umeng.analytics.MobclickAgent;
 
 public class BaseActivity extends Activity {
 
