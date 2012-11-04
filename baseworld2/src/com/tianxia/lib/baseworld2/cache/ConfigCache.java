@@ -65,4 +65,31 @@ public class ConfigCache {
             e.printStackTrace();
         }
     }
+
+    /**
+     * delete cahce file recursively
+     * @param cacheFile if null means clear cache function, or clear cache file
+     */
+    public static void clearCache(File cacheFile) {
+        if (cacheFile == null) {
+            if (Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED)) {
+                try {
+                    File cacheDir = new File(Environment.getExternalStorageDirectory().getPath() +  "/" + BaseApplication.mAppId + "/");
+                    if (cacheDir.exists()) {
+                        clearCache(cacheDir);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        } else if (cacheFile.isFile()){
+            cacheFile.delete();
+        } else if (cacheFile.isDirectory()) {
+            File[] childFiles = cacheFile.listFiles();
+            for (int i = 0; i < childFiles.length; i++) {
+                clearCache(childFiles[i]);
+            }
+            cacheFile.delete();
+        }
+    }
 }

@@ -13,7 +13,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="wrap_content">
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
@@ -63,7 +63,6 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:text="积分达到25即可,达到100,可永久去广告!"
-                        android:layout_weight="1.0"
                         android:gravity="center_vertical"
                         android:layout_marginLeft="10.0dip"
                         android:layout_marginBottom="8.0dip"
@@ -80,7 +79,7 @@
                     android:layout_height="45.0dip"
                     android:background="@drawable/selector_item_bottom">
                     <TextView
-                        android:layout_width="fill_parent"
+                        android:layout_width="0dip"
                         android:layout_height="wrap_content"
                         android:text="捐赠"
                         android:layout_marginLeft="10.0dip"
@@ -122,7 +121,7 @@
                     android:layout_height="45.0dip"
                     android:background="@drawable/selector_item_top">
                     <TextView
-                        android:layout_width="fill_parent"
+                        android:layout_width="0dip"
                         android:layout_height="wrap_content"
                         android:text="分享"
                         android:layout_weight="1.0"
@@ -143,9 +142,30 @@
                     android:layout_height="45.0dip"
                     android:background="@drawable/selector_item_middle">
                     <TextView
-                        android:layout_width="fill_parent"
+                        android:layout_width="0dip"
                         android:layout_height="wrap_content"
                         android:text="评分"
+                        android:layout_marginLeft="10.0dip"
+                        android:layout_weight="1.0"
+                        style="@style/app_setting_list_item_title"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="12.0dip"
+                        android:src="@drawable/setting_arrow" />
+                </LinearLayout>
+                <TextView android:background="#ffd2d2d4" android:layout_width="fill_parent" android:layout_height="1.0px"/>
+                <LinearLayout android:id="@+id/setting_item_clear"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:clickable="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45.0dip"
+                    android:background="@drawable/selector_item_middle">
+                    <TextView
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:text="清除缓存"
                         android:layout_marginLeft="10.0dip"
                         android:layout_weight="1.0"
                         style="@style/app_setting_list_item_title"/>
@@ -164,7 +184,7 @@
                     android:layout_height="45.0dip"
                     android:background="@drawable/selector_item_bottom">
                     <TextView
-                        android:layout_width="fill_parent"
+                        android:layout_width="0dip"
                         android:layout_height="wrap_content"
                         android:text="检查新版本"
                         android:layout_marginLeft="10.0dip"
@@ -206,7 +226,7 @@
                     android:layout_height="45.0dip"
                     android:background="@drawable/selector_item_top">
                     <TextView
-                        android:layout_width="fill_parent"
+                        android:layout_width="0dip"
                         android:layout_height="wrap_content"
                         android:text="意见反馈"
                         android:layout_weight="1.0"
@@ -227,7 +247,7 @@
                     android:layout_height="45.0dip"
                     android:background="@drawable/selector_item_bottom">
                     <TextView
-                        android:layout_width="fill_parent"
+                        android:layout_width="0dip"
                         android:layout_height="wrap_content"
                         android:text="关于我们"
                         android:layout_marginLeft="10.0dip"

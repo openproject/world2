@@ -70,6 +70,10 @@
     <string name="setting_share_app_body">向你分享一个精彩应用《花界》,看最新高清花图，学习养花知识，教你赏花，下载地址:</string>
     <string name="setting_market_none">未找到可用的应用市场.</string>
 
+    <string name="setting_clear_title">清除缓存</string>
+    <string name="setting_clear_text">请稍候，正在清除缓存....</string>
+    <string name="setting_clear_success">清除缓存完毕，还你清爽空间！</string>
+
     <string name="app_header_back">返回</string>
     <string name="app_header_menu">设置</string>
     <string name="app_header_menu_1">搜索</string>

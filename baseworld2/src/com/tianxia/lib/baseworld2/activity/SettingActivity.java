@@ -36,6 +36,7 @@ public class SettingActivity extends BaseActivity
     private View mSettingItemDonate;
     private View mSettingItemShare;
     private View mSettingItemMark;
+    private View mSettingItemClear;
     private View mSettingItemUpgrade;
     private View mSettingItemSuggest;
     private View mSettingItemAbout;
@@ -60,6 +61,7 @@ public class SettingActivity extends BaseActivity
         mSettingItemDonate = findViewById(R.id.setting_item_donate);
         mSettingItemShare = findViewById(R.id.setting_item_share);
         mSettingItemMark = findViewById(R.id.setting_item_mark);
+        mSettingItemClear = findViewById(R.id.setting_item_clear);
         mSettingItemUpgrade = findViewById(R.id.setting_item_upgrade);
         mSettingItemSuggest = findViewById(R.id.setting_item_suggest);
         mSettingItemAbout = findViewById(R.id.setting_item_about);
@@ -76,6 +78,7 @@ public class SettingActivity extends BaseActivity
         mSettingItemDonate.setOnClickListener(this);
         mSettingItemShare.setOnClickListener(this);
         mSettingItemMark.setOnClickListener(this);
+        mSettingItemClear.setOnClickListener(this);
         mSettingItemUpgrade.setOnClickListener(this);
         mSettingItemSuggest.setOnClickListener(this);
         mSettingItemAbout.setOnClickListener(this);
@@ -119,6 +122,8 @@ public class SettingActivity extends BaseActivity
             intent.setData(Uri.parse("market://details?id=" + getPackageName()));
             startActivity(intent);
 
+        } else if (v == mSettingItemClear) {
+            clear();
         } else if (v == mSettingItemUpgrade) {
             upgrade();
         } else if (v == mSettingItemSuggest) {
@@ -128,6 +133,31 @@ public class SettingActivity extends BaseActivity
             Intent intent = new Intent(this, SettingAboutActivity.class);
             startActivity(intent);
         }
+    }
+
+    /***
+     * clear app cache in sdcard : config, image, download files ...
+     */
+    private void clear() {
+        mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        mProgressDialog.setTitle(R.string.setting_clear_title);
+        mProgressDialog.setMessage(getString(R.string.setting_clear_text));
+        mProgressDialog.setCancelable(false);
+        mProgressDialog.show();
+        new Thread() {
+            @Override
+            public void run() {
+                ConfigCache.clearCache(null);
+                mProgressDialog.cancel();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(SettingActivity.this, R.string.setting_clear_success, Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        }.start();
     }
 
     public void upgrade() {
