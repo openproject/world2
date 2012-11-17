@@ -143,8 +143,8 @@ public class MainActivity extends AdapterActivity<StatuInfo>
                 @Override
                 public void onSuccess(String result){
                     try {
-                        ConfigCache.setUrlCache(result, BaseApplication.mServerLatestUrl);
                         showInfomationList(result);
+                        ConfigCache.setUrlCache(result, BaseApplication.mServerLatestUrl);
                         checkNewVersion();
                     } catch (Exception e) {
                         listView.setAdapter(null);
@@ -164,16 +164,19 @@ public class MainActivity extends AdapterActivity<StatuInfo>
     }
 
     private void moreInfomationList(int pageIndex) {
-        String cacheConfigString = ConfigCache.getUrlCache(BaseApplication.mServerPageUrl + pageIndex + ".json");
+        final String pageUrl = BaseApplication.mServerPageUrl + pageIndex + ".json";
+        String cacheConfigString = ConfigCache.getUrlCache(pageUrl);
         if (cacheConfigString != null) {
             showInfomationList(cacheConfigString);
+            ((RefreshListView)listView).finishFootView();
         } else {
             AsyncHttpClient client = new AsyncHttpClient();
-            client.get(BaseApplication.mServerPageUrl + pageIndex + ".json", new AsyncHttpResponseHandler(){
+            client.get(pageUrl, new AsyncHttpResponseHandler(){
 
                 @Override
                 public void onSuccess(String result){
                     showInfomationList(result);
+                    ConfigCache.setUrlCache(result, pageUrl);
                     ((RefreshListView)listView).finishFootView();
                 }
 
