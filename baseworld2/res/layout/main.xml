@@ -27,7 +27,7 @@
             android:layout_height="fill_parent"
             android:layout_above="@id/ad_container"
             android:cacheColorHint="#00000000"
-            android:divider="@drawable/app_divider_h_gray">
+            android:divider="@null">
         </com.tianxia.lib.baseworld2.widget.RefreshListView>
 	<ProgressBar android:id="@+id/main_webview_progress"
 	    android:layout_width="fill_parent"
