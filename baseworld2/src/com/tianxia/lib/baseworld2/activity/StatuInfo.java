@@ -16,6 +16,7 @@ public class StatuInfo implements Parcelable
     public String pic_middle;
     public String pic_original;
     public String from;
+    public String type; // Good, Set
 
     public static final Parcelable.Creator<StatuInfo> CREATOR = new Creator<StatuInfo>() {
         @Override
@@ -31,6 +32,7 @@ public class StatuInfo implements Parcelable
             statuInfo.pic_middle = source.readString();
             statuInfo.pic_original = source.readString();
             statuInfo.from = source.readString();
+            statuInfo.type = source.readString();
             return statuInfo;
         }
         @Override
@@ -55,5 +57,7 @@ public class StatuInfo implements Parcelable
         dest.writeString(pic_thumbnail);
         dest.writeString(pic_middle);
         dest.writeString(pic_original);
+        dest.writeString(from);
+        dest.writeString(type);
     }
 }

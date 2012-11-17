@@ -7,14 +7,14 @@
     <LinearLayout android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="4dip"
+        android:layout_marginBottom="4dip"
         android:orientation="vertical">
         <TextView android:id="@+id/item_month"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/calendar_top"
             android:gravity="center"
-            android:textSize="10dip"
-            android:text="9月"
+            android:textSize="10sp"
             android:textColor="#ffffff">
         </TextView>
         <TextView android:id="@+id/item_day"
@@ -23,10 +23,27 @@
             android:background="@drawable/calendar_bottom"
             android:gravity="center_horizontal|top"
             android:paddingTop="-5dip"
-            android:textSize="16dip"
-            android:text="21"
+            android:textSize="16sp"
             android:textColor="#192F06">
         </TextView>
+        <ImageView android:id="@+id/item_good"
+            android:src="@drawable/tag_good"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="4dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+         <ImageView android:id="@+id/item_set"
+            android:src="@drawable/tag_set"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="4dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView android:id="@+id/item_pic"
+            android:src="@drawable/tag_pic"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="4dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </LinearLayout>
     <LinearLayout android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -44,7 +61,7 @@
                 android:layout_marginBottom="2dip"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="2dip"
-                android:textSize="12dip"
+                android:textSize="12sp"
                 android:textColor="#192F06">
             </TextView>
             <TextView android:id="@+id/item_name"
@@ -55,7 +72,7 @@
                 android:layout_toLeftOf="@id/item_date"
                 android:singleLine="true"
                 android:ellipsize="end"
-                android:textSize="16dip"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="#192F06">
             </TextView>
@@ -64,7 +81,7 @@
             android:autoLink="all"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textSize="15dip"
+            android:textSize="15sp"
             android:textColor="#192F06">
         </TextView>
         <com.tianxia.widget.image.SmartImageView android:id="@+id/item_thumbnail"
@@ -78,7 +95,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="4dip"
-                android:textSize="11dip"
+                android:textSize="11sp"
                 android:textColor="#192F06">
             </TextView>
         </LinearLayout>

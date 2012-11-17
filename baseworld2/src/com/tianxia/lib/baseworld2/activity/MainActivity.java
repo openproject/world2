@@ -66,6 +66,9 @@ public class MainActivity extends AdapterActivity<StatuInfo>
     private TextView mItemFrom;
     private TextView mItemMonth;
     private TextView mItemDay;
+    private View mItemGood;
+    private View mItemSet;
+    private View mItemPic;
 
     private Button mAppHeaderMenu;
     private Button mAppHeaderMenu_1;
@@ -210,6 +213,7 @@ public class MainActivity extends AdapterActivity<StatuInfo>
                 statuInfo.pic_middle = statuList.getJSONObject(i).optString("pic_middle");
                 statuInfo.pic_original = statuList.getJSONObject(i).optString("pic_original");
                 statuInfo.from = statuList.getJSONObject(i).optString("from");
+                statuInfo.type = statuList.getJSONObject(i).optString("type");
                 listData.add(statuInfo);
             }
             if (pageIndex == 0) {
@@ -353,6 +357,10 @@ public class MainActivity extends AdapterActivity<StatuInfo>
 
         mItemMonth = (TextView) view.findViewById(R.id.item_month);
         mItemDay = (TextView) view.findViewById(R.id.item_day);
+        mItemGood = view.findViewById(R.id.item_good);
+        mItemSet = view.findViewById(R.id.item_set);
+        mItemPic = view.findViewById(R.id.item_pic);
+
         String dateString = listData.get(position).created;
         if (dateString != null && !"".equals(dateString)) {
             try {
@@ -365,6 +373,19 @@ public class MainActivity extends AdapterActivity<StatuInfo>
             setMonthAndDay(null, null);
         }
 
+        mItemGood.setVisibility(View.GONE);
+        mItemSet.setVisibility(View.GONE);
+        String type = listData.get(position).type;
+        if (type != null && !"".equals(type)) {
+            String[] subType = type.split(",");
+            if (subType.length > 0 && "1".equals(subType[0].trim())) {
+                mItemGood.setVisibility(View.VISIBLE);
+            }
+            if (subType.length > 1 && "1".equals(subType[1].trim())) {
+                mItemSet.setVisibility(View.VISIBLE);
+            }
+        }
+
         mItemText = (TextView) view.findViewById(R.id.item_text);
         mItemText.setText(listData.get(position).text);
 
@@ -372,8 +393,10 @@ public class MainActivity extends AdapterActivity<StatuInfo>
         if (listData.get(position).pic_thumbnail != null && !"".equals(listData.get(position).pic_thumbnail)) {
             mItemThumbnail.setImageUrl(listData.get(position).pic_thumbnail, R.drawable.icon, 0);
             mItemThumbnail.setVisibility(View.VISIBLE);
+            mItemPic.setVisibility(View.VISIBLE);
         } else {
             mItemThumbnail.setVisibility(View.GONE);
+            mItemPic.setVisibility(View.GONE);
         }
 
         mItemFrom = (TextView) view.findViewById(R.id.item_from);
