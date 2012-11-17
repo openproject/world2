@@ -6,8 +6,8 @@ markets="google appchina waps gfan 91 hiapk goapk mumayi eoe nduo feiliu crossmo
 #markets="google official dev"
 for market in $markets
 do
-    echo packaging healthworld_1.0_$market.apk ...
+    echo packaging humorjoke_1.1_$market.apk ...
     sed -i "s/\(android:value=\)\"\(.*\)\"\( android:name=\"UMENG_CHANNEL\"\)/\1\"$market\"\3/g" AndroidManifest.xml
     sed -i "s/\(android:value=\)\"\(.*\)\"\( android:name=\"WAPS_PID\"\)/\1\"$market\"\3/g" AndroidManifest.xml
-    ant -Dapk-name=humorjoke -Dapk-version=v1.0 -Dapk-market=$market
+    ant -Dapk-name=humorjoke -Dapk-version=v1.1 -Dapk-market=$market
 done
