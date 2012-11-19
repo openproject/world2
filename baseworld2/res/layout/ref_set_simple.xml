@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff">
+    <include android:id="@+id/app_header"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/app_header_height"
+        layout="@layout/app_header" />
+    <include android:id="@+id/app_notice"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/app_notice_height"
+        layout="@layout/app_notice" />
+    <ListView android:id="@+id/ref_set_simple_list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:cacheColorHint="#00000000"
+        android:divider="@null">
+    </ListView>
+</LinearLayout>

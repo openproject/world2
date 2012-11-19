@@ -217,6 +217,19 @@ public class MainActivity extends AdapterActivity<StatuInfo>
                 statuInfo.pic_original = statuList.getJSONObject(i).optString("pic_original");
                 statuInfo.from = statuList.getJSONObject(i).optString("from");
                 statuInfo.type = statuList.getJSONObject(i).optString("type");
+                statuInfo.ref = statuList.getJSONObject(i).opt("ref");
+
+                // for simpler using later, fill the status info extend attribute
+                if (statuInfo.type != null && !"".equals(statuInfo.type)) {
+                    String[] subType = statuInfo.type.split(",");
+                    if (subType.length > 0 && "1".equals(subType[0].trim())) {
+                        statuInfo.isGood = true;
+                    }
+                    if (subType.length > 1 && "1".equals(subType[1].trim())) {
+                        statuInfo.isSetSimple = true;
+                    }
+                }
+
                 listData.add(statuInfo);
             }
             if (pageIndex == 0) {
@@ -378,15 +391,12 @@ public class MainActivity extends AdapterActivity<StatuInfo>
 
         mItemGood.setVisibility(View.GONE);
         mItemSet.setVisibility(View.GONE);
-        String type = listData.get(position).type;
-        if (type != null && !"".equals(type)) {
-            String[] subType = type.split(",");
-            if (subType.length > 0 && "1".equals(subType[0].trim())) {
-                mItemGood.setVisibility(View.VISIBLE);
-            }
-            if (subType.length > 1 && "1".equals(subType[1].trim())) {
-                mItemSet.setVisibility(View.VISIBLE);
-            }
+        if (listData.get(position).isGood) {
+            mItemGood.setVisibility(View.VISIBLE);
+        }
+        if (listData.get(position).isSetSimple) {
+            mItemMonth.setText("合集");
+            mItemSet.setVisibility(View.VISIBLE);
         }
 
         mItemText = (TextView) view.findViewById(R.id.item_text);
@@ -424,6 +434,11 @@ public class MainActivity extends AdapterActivity<StatuInfo>
 
     @Override
     protected void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+        StatuInfo statuInfo = listData.get(position - 1);
+        if (statuInfo.isSetSimple &&  statuInfo.ref!= null) {
+            gotoSetSimple(Integer.valueOf(String.valueOf(statuInfo.ref)), statuInfo.name);
+            return;
+        }
         gotoDetails(position - 1);
     }
 
@@ -537,6 +552,17 @@ public class MainActivity extends AdapterActivity<StatuInfo>
     }
 
     protected void gotoDetails(int position) {
+    }
+
+    private void gotoSetSimple(int season, String title) {
+        if (season <= 0) {
+            return;
+        } else {
+            Intent intent = new Intent(this, RefSetSimpleActivity.class);
+            intent.putExtra("season", season);
+            intent.putExtra("title", title);
+            startActivity(intent);
+        }
     }
 
     @Override

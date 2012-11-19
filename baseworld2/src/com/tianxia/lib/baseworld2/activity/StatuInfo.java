@@ -6,6 +6,7 @@ import android.os.Parcel;
 public class StatuInfo implements Parcelable
 {
 
+    // basic attribute
     public long id;
     public String created;
     public String author;
@@ -17,6 +18,11 @@ public class StatuInfo implements Parcelable
     public String pic_original;
     public String from;
     public String type; // Good, Set
+
+    public Object ref;
+    // extend attribute for ref
+    public boolean isGood = false;
+    public boolean isSetSimple = false;
 
     public static final Parcelable.Creator<StatuInfo> CREATOR = new Creator<StatuInfo>() {
         @Override
