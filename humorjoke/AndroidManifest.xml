@@ -3,7 +3,8 @@
     package="com.tianxia.app.humorjoke"
     android:versionCode="5"
     android:versionName="V1.1">
-    <uses-sdk android:minSdkVersion="7" />
+    <uses-sdk android:minSdkVersion="7" 
+        android:targetSdkVersion="17"/>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -40,6 +41,7 @@
 
         <activity android:name=".AppSettingActivity" />
         <activity android:name=".AppDetailsActivity" />
+        <activity android:name="com.tianxia.lib.baseworld2.activity.OptionsActivity"></activity>
         <activity android:name="com.tianxia.lib.baseworld2.activity.RefSetSimpleActivity"></activity>
         <activity android:name="com.tianxia.lib.baseworld2.activity.SettingAboutActivity"></activity>
         <service android:name="com.tianxia.lib.baseworld2.upgrade.AppUpgradeService"></service>

@@ -78,6 +78,7 @@
     <string name="app_header_menu">设置</string>
     <string name="app_header_menu_1">搜索</string>
     <string name="app_notice_text">每天持续更新，在设置里面还可以去广告哦~</string>
+    <string name="app_notice_options_text">副版，主要提供一些更精彩的内容、福利等！</string>
 
     <string name="main_options">选项</string>
     <string name="main_options_share">分享</string>
@@ -85,5 +86,6 @@
     <string name="main_options_copy_toast">已经成功复制到剪贴板。</string>
     <string name="main_options_share_title">分享一条来自《幽默笑话》的资讯</string>
 
+    <string name="options_title">幽默笑话副版</string>
     <string name="details_title">正文</string>
 </resources>

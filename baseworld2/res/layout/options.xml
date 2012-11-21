@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff">
+    <include android:id="@+id/app_header"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/app_header_height"
+        android:layout_alignParentTop="true"
+        layout="@layout/app_header" />
+    <include android:id="@+id/app_notice"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/app_header"
+        layout="@layout/app_notice_options" />
+    <LinearLayout android:id="@+id/ad_container"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal" />
+    <TextView android:id="@+id/item_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="#192F06"
+        android:text="dddddddddddd">
+    </TextView>
+</RelativeLayout>

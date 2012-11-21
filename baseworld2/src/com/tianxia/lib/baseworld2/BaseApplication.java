@@ -41,6 +41,7 @@ public abstract class BaseApplication extends Application {
 
     public static String mServerLatestUrl;
     public static String mServerPageUrl;
+    public static String mServerSeasonUrl;
 
     @Override
     public void onCreate() {
@@ -70,6 +71,7 @@ public abstract class BaseApplication extends Application {
 
         mServerLatestUrl = mDomain + mAppId + "/data/json/latest.json";
         mServerPageUrl = mDomain + mAppId + "/data/json/pages/";
+        mServerSeasonUrl = mDomain + mAppId + "/data/json/seasons/";
 
         if (Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED)) {
             File file = new File(Environment.getExternalStorageDirectory().getPath() +  "/" + mAppId + "/config/");

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dip"
+        android:layout_gravity="center_horizontal"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textColor="#192F06"
+        android:textSize="16sp"
+        android:textStyle="bold" >
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dip"
+        android:layout_marginLeft="8dip"
+        android:layout_marginRight="8dip"
+        android:background="@drawable/ref_set_simple_list_item_bg"
+        android:clickable="true"
+        android:orientation="vertical"
+        android:padding="8dip" >
+
+        <TextView
+            android:id="@+id/item_text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#192F06"
+            android:textSize="15sp" >
+        </TextView>
+
+        <com.tianxia.widget.image.SmartImageView
+            android:id="@+id/item_thumbnail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="2dip" />
+    </LinearLayout>
+
+</LinearLayout>

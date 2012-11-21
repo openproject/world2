@@ -8,10 +8,6 @@
         android:layout_width="fill_parent"
         android:layout_height="@dimen/app_header_height"
         layout="@layout/app_header" />
-    <include android:id="@+id/app_notice"
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/app_notice_height"
-        layout="@layout/app_notice" />
     <ListView android:id="@+id/ref_set_simple_list"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
