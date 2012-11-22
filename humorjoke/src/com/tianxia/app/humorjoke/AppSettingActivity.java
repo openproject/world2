@@ -8,20 +8,35 @@ import com.waps.UpdatePointsNotifier;
 
 public class AppSettingActivity extends SettingActivity implements UpdatePointsNotifier{
 
+    private boolean mNeedRefreshPoint = false;
+
     @Override
     public void showAdOffers() {
+         mNeedRefreshPoint = true;
          AppConnect.getInstance(this).showOffers(this);
     }
 
     @Override
     public void showAdCredits() {
+        mSettingItemAd_Credits.setText(AppApplication.mAdPoints + "");
         //获取积分
         AppConnect.getInstance(this).getPoints(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mNeedRefreshPoint) {
+            //获取积分
+            AppConnect.getInstance(this).getPoints(this);
+        }
     }
 
     //获取成功
     @Override
     public void getUpdatePoints(String currencyName, final int pointTotal) {
+        mNeedRefreshPoint = false;
+        AppApplication.mAdPoints = pointTotal;
         runOnUiThread(new Runnable () {
             public void run() {
                 try {
@@ -36,6 +51,7 @@ public class AppSettingActivity extends SettingActivity implements UpdatePointsN
     //获取失败
     @Override
     public void getUpdatePointsFailed(String error) {
+        mNeedRefreshPoint = false;
         runOnUiThread(new Runnable () {
             public void run() {
                 try {

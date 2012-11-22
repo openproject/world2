@@ -8,4 +8,6 @@
 
     <string name="setting_share_app_subject">向你分享一个精彩应用《幽默笑话》</string>
     <string name="setting_share_app_body">向你分享一个精彩应用《幽默笑话》,让您每天都过的开心快乐！下载地址:</string>
+
+    <string name="options_status_text">你的当前积分为%s分</string>
 </resources>
