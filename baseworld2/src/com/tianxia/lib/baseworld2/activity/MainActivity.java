@@ -367,8 +367,7 @@ public class MainActivity extends AdapterActivity<StatuInfo>
         } else if (v == mAppHeaderMenu_1) {
             Toast.makeText(this, "正在努力开发中，敬请期待。", Toast.LENGTH_SHORT).show();
         } else if (v == mAppHeaderOptions) {
-            Intent intent  = new Intent(this, OptionsActivity.class);
-            startActivity(intent);
+            gotoOptions();
             overridePendingTransition(R.anim.slide_from_left_in, R.anim.silde_from_left_out);
         }
     }
@@ -559,12 +558,21 @@ public class MainActivity extends AdapterActivity<StatuInfo>
     }
 
     protected void displayAd() {
+        // you can override this method to custom ad
     }
 
     protected void gotoSetting() {
+        // you can override this method to custom setting activity
     }
 
     protected void gotoDetails(int position) {
+        // you can override this method to custom details activity
+    }
+
+    protected void gotoOptions() {
+        // you can override this method to custom options activity
+        Intent intent  = new Intent(this, OptionsActivity.class);
+        startActivity(intent);
     }
 
     private void gotoSetSimple(int season, String title) {
