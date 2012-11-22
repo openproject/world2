@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_vertical|right"
+    android:background="@drawable/app_status_bg">
+    <TextView android:id="@+id/status_text"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/app_status_right"
+        android:textSize="@dimen/app_status_size"
+        android:textColor="@color/app_status_gray"/>
+</LinearLayout>
+

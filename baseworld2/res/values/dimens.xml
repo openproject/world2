@@ -11,5 +11,9 @@
     <dimen name="app_notice_left">5.0dip</dimen>
     <dimen name="app_notice_size">12.0dip</dimen>
 
+    <dimen name="app_status_height">28.0dip</dimen>
+    <dimen name="app_status_right">5.0dip</dimen>
+    <dimen name="app_status_size">12.0dip</dimen>
+
     <dimen name="drag_item_normal_height">48dip</dimen>
 </resources>

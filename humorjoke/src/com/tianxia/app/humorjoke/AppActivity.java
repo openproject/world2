@@ -4,11 +4,10 @@ import android.content.Intent;
 import android.view.View;
 
 import com.tianxia.lib.baseworld2.activity.MainActivity;
-
+import com.tianxia.lib.baseworld2.utils.PreferencesUtils;
 import com.waps.AdView;
 import com.waps.AppConnect;
 import com.waps.UpdatePointsNotifier;
-import com.tianxia.lib.baseworld2.utils.PreferencesUtils;
 
 public class AppActivity extends MainActivity implements UpdatePointsNotifier{
 
@@ -33,9 +32,16 @@ public class AppActivity extends MainActivity implements UpdatePointsNotifier{
         startActivity(intent);
     }
 
+    @Override
+    protected void gotoOptions() {
+        Intent intent  = new Intent(this, AppOptionsActivity.class);
+        startActivity(intent);
+    }
+
     //获取成功
     @Override
     public void getUpdatePoints(String currencyName, int pointTotal) {
+        AppApplication.mAdPoints = pointTotal;
         if (pointTotal >= AppApplication.NO_AD_FOREVER_SPEND_MAX) {
             return;
         }
