@@ -8,7 +8,7 @@
         android:layout_width="fill_parent"
         android:layout_height="@dimen/app_header_height"
         android:layout_alignParentTop="true"
-        layout="@layout/app_header" />
+        layout="@layout/app_header_options" />
     <include android:id="@+id/app_notice"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

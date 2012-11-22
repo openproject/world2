@@ -12,30 +12,41 @@ public class OptionsActivity extends BaseActivity
     implements View.OnClickListener {
 
     private TextView mAppTitle;
+    private View mAppMenu;
     protected LinearLayout mAdContainer;
+
+    private View mNavBaseExit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.options);
-
-        mAppTitle = (TextView) findViewById(R.id.app_title);
-        mAppTitle.setText(R.string.options_title);
-        mAppTitle.setGravity(Gravity.CENTER);
-
         initContent();
 
-        mAdContainer = (LinearLayout) findViewById(R.id.ad_container);
     }
 
     protected void displayAd() {
     }
 
     private void initContent() {
+        setContentView(R.layout.options);
+
+        mAppTitle = (TextView) findViewById(R.id.app_title);
+        mAppTitle.setText(R.string.options_title);
+        mAppTitle.setGravity(Gravity.CENTER);
+        mAppMenu = findViewById(R.id.app_header_menu);
+        mAppMenu.setOnClickListener(this);
+
+        mNavBaseExit = findViewById(R.id.item_base_exit);
+        mNavBaseExit.setOnClickListener(this);
+
+        mAdContainer = (LinearLayout) findViewById(R.id.ad_container);
     }
 
     @Override
     public void onClick(View v) {
+        if (v == mNavBaseExit || v == mAppMenu) {
+            onBackPressed();
+        }
     }
 
     @Override
