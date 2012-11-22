@@ -60,16 +60,6 @@ public class MainActivity extends AdapterActivity<StatuInfo>
     private ProgressBar mWebViewProgressBar;
     private WebView mWebView;
 
-    private TextView mItemName;
-    private TextView mItemText;
-    private SmartImageView mItemThumbnail;
-    private TextView mItemFrom;
-    private TextView mItemMonth;
-    private TextView mItemDay;
-    private View mItemGood;
-    private View mItemSet;
-    private View mItemPic;
-
     private Button mAppHeaderMenu;
     private Button mAppHeaderMenu_1;
     private View mAppHeaderDivider;
@@ -374,73 +364,87 @@ public class MainActivity extends AdapterActivity<StatuInfo>
 
     @Override
     protected View getView(int position, View convertView) {
-        View view = convertView;
-        if(view == null){
-            view = LayoutInflater.from(this).inflate(R.layout.main_list_item, null);
+        ViewHolder holder;
+        if(convertView == null){
+            holder = new ViewHolder();
+            convertView = LayoutInflater.from(this).inflate(R.layout.main_list_item, null);
+            holder.itemName = (TextView) convertView.findViewById(R.id.item_name);
+            holder.itemText = (TextView) convertView.findViewById(R.id.item_text);
+            holder.itemDay = (TextView) convertView.findViewById(R.id.item_day);
+            holder.itemMonth = (TextView) convertView.findViewById(R.id.item_month);
+            holder.itemGood = convertView.findViewById(R.id.item_good);
+            holder.itemSet = convertView.findViewById(R.id.item_set);
+            holder.itemPic = convertView.findViewById(R.id.item_pic);
+            holder.itemThumbnail = (SmartImageView) convertView.findViewById(R.id.item_thumbnail);
+            holder.itemFrom = (TextView) convertView.findViewById(R.id.item_from);
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder)convertView.getTag();
         }
-
-        mItemName = (TextView) view.findViewById(R.id.item_name);
-        mItemName.setText(listData.get(position).name);
-        mItemName.getPaint().setFakeBoldText(true);
-
-        mItemMonth = (TextView) view.findViewById(R.id.item_month);
-        mItemDay = (TextView) view.findViewById(R.id.item_day);
-        mItemGood = view.findViewById(R.id.item_good);
-        mItemSet = view.findViewById(R.id.item_set);
-        mItemPic = view.findViewById(R.id.item_pic);
+        if (listData.get(position).from != null && !"".equals(listData.get(position).from)) {
+            holder.itemFrom.setText("来自:" + listData.get(position).from);
+        } else {
+            holder.itemFrom.setText("来自:新浪");
+        }
+        holder.itemGood.setVisibility(View.GONE);
+        holder.itemSet.setVisibility(View.GONE);
+        holder.itemName.setText(listData.get(position).name);
+        holder.itemName.getPaint().setFakeBoldText(true);
 
         String dateString = listData.get(position).created;
         if (dateString != null && !"".equals(dateString)) {
             try {
-                setMonthAndDay(dateString.split("-")[1], dateString.split("-")[2]);
+                setMonthAndDay(holder.itemMonth, dateString.split("-")[1], holder.itemDay, dateString.split("-")[2]);
             } catch (Exception e) {
                 e.printStackTrace();
-                setMonthAndDay(null, null);
+                setMonthAndDay(holder.itemMonth, null, holder.itemDay, null);
             }
         } else {
-            setMonthAndDay(null, null);
+            setMonthAndDay(holder.itemMonth, null, holder.itemDay, null);
         }
 
-        mItemGood.setVisibility(View.GONE);
-        mItemSet.setVisibility(View.GONE);
         if (listData.get(position).isGood) {
-            mItemGood.setVisibility(View.VISIBLE);
+            holder.itemGood.setVisibility(View.VISIBLE);
         }
         if (listData.get(position).isSetSimple) {
-            mItemMonth.setText("合集");
-            mItemSet.setVisibility(View.VISIBLE);
+            holder.itemMonth.setText("合集");
+            holder.itemSet.setVisibility(View.VISIBLE);
         }
 
-        mItemText = (TextView) view.findViewById(R.id.item_text);
-        mItemText.setText(listData.get(position).text);
+        holder.itemText.setText(listData.get(position).text);
 
-        mItemThumbnail = (SmartImageView) view.findViewById(R.id.item_thumbnail);
         if (listData.get(position).pic_thumbnail != null && !"".equals(listData.get(position).pic_thumbnail)) {
-            mItemThumbnail.setImageUrl(listData.get(position).pic_thumbnail, R.drawable.icon, 0);
-            mItemThumbnail.setVisibility(View.VISIBLE);
-            mItemPic.setVisibility(View.VISIBLE);
+            holder.itemThumbnail.setImageUrl(listData.get(position).pic_thumbnail, R.drawable.icon, 0);
+            holder.itemThumbnail.setVisibility(View.VISIBLE);
+            holder.itemPic.setVisibility(View.VISIBLE);
         } else {
-            mItemThumbnail.setVisibility(View.GONE);
-            mItemPic.setVisibility(View.GONE);
+            holder.itemThumbnail.setVisibility(View.GONE);
+            holder.itemPic.setVisibility(View.GONE);
         }
 
-        mItemFrom = (TextView) view.findViewById(R.id.item_from);
-        if (listData.get(position).from != null && !"".equals(listData.get(position).from)) {
-            mItemFrom.setText("来自:" + listData.get(position).from);
-        } else {
-            mItemFrom.setText("来自:新浪");
-        }
-        return view;
+        return convertView;
     }
 
-    private void setMonthAndDay(String mouth, String day) {
+    static class ViewHolder {
+        public TextView itemName;
+        public TextView itemText;
+        public SmartImageView itemThumbnail;
+        public TextView itemFrom;
+        public TextView itemMonth;
+        public TextView itemDay;
+        public View itemGood;
+        public View itemSet;
+        public View itemPic;
+    }
+
+    private void setMonthAndDay(TextView mouthView, String mouth, TextView dayView, String day) {
         if (mouth != null) {
-            mItemMonth.setText(mouth + "月");
-            mItemDay.setText(day);
+            mouthView.setText(mouth + "月");
+            dayView.setText(day);
         } else {
             Calendar cal = Calendar.getInstance();
-            mItemMonth.setText(cal.get(Calendar.MONTH) + "月");
-            mItemDay.setText(cal.get(Calendar.DAY_OF_MONTH) + "");
+            mouthView.setText(cal.get(Calendar.MONTH) + "月");
+            dayView.setText(cal.get(Calendar.DAY_OF_MONTH) + "");
         }
     }
 
