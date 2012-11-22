@@ -369,6 +369,7 @@ public class MainActivity extends AdapterActivity<StatuInfo>
         } else if (v == mAppHeaderOptions) {
             Intent intent  = new Intent(this, OptionsActivity.class);
             startActivity(intent);
+            overridePendingTransition(R.anim.slide_from_left_in, R.anim.silde_from_left_out);
         }
     }
 
@@ -447,7 +448,7 @@ public class MainActivity extends AdapterActivity<StatuInfo>
     @Override
     protected void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
         StatuInfo statuInfo = listData.get(position - 1);
-        if (statuInfo.isSetSimple &&  statuInfo.ref!= null) {
+        if (statuInfo.isSetSimple &&  statuInfo.ref != null) {
             gotoSetSimple(Integer.valueOf(String.valueOf(statuInfo.ref)), statuInfo.name);
             return;
         }

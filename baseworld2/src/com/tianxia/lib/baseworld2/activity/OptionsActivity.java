@@ -37,4 +37,10 @@ public class OptionsActivity extends BaseActivity
     @Override
     public void onClick(View v) {
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_from_right_in, R.anim.silde_from_right_out);
+    }
 }
