@@ -24,8 +24,13 @@ public class AppOptionsActivity extends OptionsActivity implements UpdatePointsN
         mItemPoints.setOnClickListener(this);
 
         mAppStatusText = (TextView) findViewById(R.id.status_text);
-        mAppStatusText.setText(
-                getString(R.string.options_status_text, AppApplication.mAdPoints + ""));
+        if (AppApplication.mAdPoints < 0) {
+            mAppStatusText.setText(R.string.options_status_loading);
+            AppConnect.getInstance(this).getPoints(this);
+        } else {
+            mAppStatusText.setText(
+                    getString(R.string.options_status_text, AppApplication.mAdPoints + ""));
+        }
     }
 
     @Override
@@ -67,5 +72,6 @@ public class AppOptionsActivity extends OptionsActivity implements UpdatePointsN
     @Override
     public void getUpdatePointsFailed(String error) {
         mNeedRefreshPoint = false;
+        mAppStatusText.setText(R.string.options_status_fail);
     }
 }
