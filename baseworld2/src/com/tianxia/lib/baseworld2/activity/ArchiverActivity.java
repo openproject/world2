@@ -1,7 +1,12 @@
 package com.tianxia.lib.baseworld2.activity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,6 +28,7 @@ public class ArchiverActivity extends BaseActivity
     private LinearLayout mPageColumn4;
     private LinearLayout mPageColumn5;
 
+    private List<Button> mButtonList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +53,8 @@ public class ArchiverActivity extends BaseActivity
         mPageColumn3 = (LinearLayout) findViewById(R.id.page_column_3);
         mPageColumn4 = (LinearLayout) findViewById(R.id.page_column_4);
         mPageColumn5 = (LinearLayout) findViewById(R.id.page_column_5);
+
+        mButtonList = new ArrayList<Button>();
         for (int i = 0; i < BaseApplication.mMaxPage; i++) {
             Button btn = new Button(this);
             btn.setText((i+1) + "");
@@ -61,8 +69,20 @@ public class ArchiverActivity extends BaseActivity
             } else if (i % 5 == 4) {
                 mPageColumn5.addView(btn);
             }
+            btn.setTag((i + 1) + "");
+            btn.setOnClickListener(mPageButton);
+            mButtonList.add(btn);
         }
     }
+
+    private OnClickListener mPageButton = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(ArchiverActivity.this, ArchiverPageActivity.class);
+            intent.putExtra("page", Integer.parseInt((String) v.getTag()));
+            startActivity(intent);
+        }
+    };
 
     @Override
     public void onClick(View v) {
