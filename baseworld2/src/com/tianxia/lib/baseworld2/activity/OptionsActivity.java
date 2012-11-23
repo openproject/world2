@@ -1,5 +1,6 @@
 package com.tianxia.lib.baseworld2.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -15,6 +16,7 @@ public class OptionsActivity extends BaseActivity
     private View mAppMenu;
     protected LinearLayout mAdContainer;
 
+    private View mNavBaseArchiver;
     private View mNavBaseExit;
 
     @Override
@@ -37,7 +39,9 @@ public class OptionsActivity extends BaseActivity
         mAppMenu.setOnClickListener(this);
 
         mNavBaseExit = findViewById(R.id.item_base_exit);
+        mNavBaseArchiver = findViewById(R.id.item_base_archiver);
         mNavBaseExit.setOnClickListener(this);
+        mNavBaseArchiver.setOnClickListener(this);
 
         mAdContainer = (LinearLayout) findViewById(R.id.ad_container);
     }
@@ -46,7 +50,14 @@ public class OptionsActivity extends BaseActivity
     public void onClick(View v) {
         if (v == mNavBaseExit || v == mAppMenu) {
             onBackPressed();
+        } else if (v == mNavBaseArchiver) {
+            gotoArchiver();
         }
+    }
+
+    public void gotoArchiver() {
+        Intent intent = new Intent(this, ArchiverActivity.class);
+        startActivity(intent);
     }
 
     @Override

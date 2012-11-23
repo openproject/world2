@@ -43,6 +43,8 @@ public abstract class BaseApplication extends Application {
     public static String mServerPageUrl;
     public static String mServerSeasonUrl;
 
+    public static int mMaxPage;
+
     @Override
     public void onCreate() {
         initEnv();

@@ -9,7 +9,7 @@
         android:layout_height="24dip"
         android:layout_margin="2dip"
         android:background="@drawable/app_notice_icon"/>
-    <TextView android:id="@+id/notice_text"
+    <TextView android:id="@+id/app_notice_text"
         android:gravity="center_vertical"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff">
+    <include android:id="@+id/app_header"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/app_header_height"
+        android:layout_alignParentTop="true"
+        layout="@layout/app_header" />
+    <include android:id="@+id/app_notice"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/app_notice_height"
+        android:layout_below="@id/app_header"
+        layout="@layout/app_notice" />
+    <ScrollView android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/app_notice"
+        android:layout_alignParentBottom="true">
+        <LinearLayout android:id="@+id/archiver_page_container"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="6dip"
+            android:baselineAligned="false">
+            <LinearLayout android:id="@+id/page_column_1"
+                android:layout_weight="1"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            </LinearLayout>
+            <LinearLayout android:id="@+id/page_column_2"
+                android:layout_weight="1"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            </LinearLayout>
+            <LinearLayout android:id="@+id/page_column_3"
+                android:layout_weight="1"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            </LinearLayout>
+            <LinearLayout android:id="@+id/page_column_4"
+                android:layout_weight="1"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            </LinearLayout>
+            <LinearLayout android:id="@+id/page_column_5"
+                android:layout_weight="1"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

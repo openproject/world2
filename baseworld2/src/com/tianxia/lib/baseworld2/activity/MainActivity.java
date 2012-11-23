@@ -106,7 +106,7 @@ public class MainActivity extends AdapterActivity<StatuInfo>
             mAppNoticeView.setVisibility(View.VISIBLE);
             PreferencesUtils.setLongPreference(this,
                     SHARE_NOTICE_LAST_TIME,
-                    System.currentTimeMillis());                               
+                    System.currentTimeMillis());
         } else {
             mAppNoticeView.setVisibility(View.GONE);
         }
@@ -232,6 +232,7 @@ public class MainActivity extends AdapterActivity<StatuInfo>
             }
 
             pageIndex = statusConfig.getInt("page");
+            BaseApplication.mMaxPage = pageIndex - 1;
             if (pageIndex == 1) {
                 //if pageIndex == 1 means the page is the last page
                 //so do not need show More FooterView any more

@@ -70,7 +70,7 @@ public class DetailsActivity extends BaseActivity
             mAppNoticeView.setVisibility(View.VISIBLE);
             PreferencesUtils.setLongPreference(this,
                     MainActivity.SHARE_NOTICE_LAST_TIME,
-                    System.currentTimeMillis());                               
+                    System.currentTimeMillis());
         } else {
             mAppNoticeView.setVisibility(View.GONE);
         }
