@@ -376,16 +376,11 @@ public class MainActivity extends AdapterActivity<StatuInfo>
             holder.itemSet = convertView.findViewById(R.id.item_set);
             holder.itemPic = convertView.findViewById(R.id.item_pic);
             holder.itemThumbnail = (SmartImageView) convertView.findViewById(R.id.item_thumbnail);
-            holder.itemFrom = (TextView) convertView.findViewById(R.id.item_from);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder)convertView.getTag();
         }
-        if (listData.get(position).from != null && !"".equals(listData.get(position).from)) {
-            holder.itemFrom.setText("来自:" + listData.get(position).from);
-        } else {
-            holder.itemFrom.setText("来自:新浪");
-        }
+
         holder.itemGood.setVisibility(View.GONE);
         holder.itemSet.setVisibility(View.GONE);
         holder.itemName.setText(listData.get(position).name);
@@ -406,6 +401,7 @@ public class MainActivity extends AdapterActivity<StatuInfo>
         if (listData.get(position).isGood) {
             holder.itemGood.setVisibility(View.VISIBLE);
         }
+
         if (listData.get(position).isSetSimple) {
             holder.itemMonth.setText("合集");
             holder.itemSet.setVisibility(View.VISIBLE);
@@ -429,7 +425,6 @@ public class MainActivity extends AdapterActivity<StatuInfo>
         public TextView itemName;
         public TextView itemText;
         public SmartImageView itemThumbnail;
-        public TextView itemFrom;
         public TextView itemMonth;
         public TextView itemDay;
         public View itemGood;
