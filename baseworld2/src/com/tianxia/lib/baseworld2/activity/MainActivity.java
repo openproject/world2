@@ -61,9 +61,7 @@ public class MainActivity extends AdapterActivity<StatuInfo>
     private WebView mWebView;
 
     private Button mAppHeaderMenu;
-    private Button mAppHeaderMenu_1;
     private View mAppHeaderDivider;
-    private View mAppHeaderDivider_1;
     private View mAppHeaderOptions;
     private View mAppHeaderBackDivider1;
 
@@ -250,22 +248,17 @@ public class MainActivity extends AdapterActivity<StatuInfo>
 
         //init the menu widget
         mAppHeaderMenu = (Button) findViewById(R.id.app_header_menu);
-        mAppHeaderMenu_1 = (Button) findViewById(R.id.app_header_menu_1);
         mAppHeaderDivider = findViewById(R.id.app_header_divider);
-        mAppHeaderDivider_1 = findViewById(R.id.app_header_divider_1);
         mAppHeaderOptions = findViewById(R.id.app_header_options);
         mAppHeaderBackDivider1 = findViewById(R.id.app_header_back_divider1);
         //show menu items
         mAppHeaderMenu.setVisibility(View.VISIBLE);
-        mAppHeaderMenu_1.setVisibility(View.VISIBLE);
         mAppHeaderDivider.setVisibility(View.VISIBLE);
-        mAppHeaderDivider_1.setVisibility(View.VISIBLE);
         mAppHeaderOptions.setVisibility(View.VISIBLE);
         mAppHeaderBackDivider1.setVisibility(View.VISIBLE);
 
         //set menu click listener
         mAppHeaderMenu.setOnClickListener(this);
-        mAppHeaderMenu_1.setOnClickListener(this);
         mAppHeaderOptions.setOnClickListener(this);
         ((RefreshListView) listView).setOnRefreshListener(this);
 
@@ -355,8 +348,6 @@ public class MainActivity extends AdapterActivity<StatuInfo>
         if (v == mAppHeaderMenu) {
             //setting
             gotoSetting();
-        } else if (v == mAppHeaderMenu_1) {
-            Toast.makeText(this, "正在努力开发中，敬请期待。", Toast.LENGTH_SHORT).show();
         } else if (v == mAppHeaderOptions) {
             gotoOptions();
             overridePendingTransition(R.anim.slide_from_left_in, R.anim.silde_from_left_out);

@@ -44,6 +44,7 @@
         <activity android:name=".AppOptionsActivity" />
         <activity android:name="com.tianxia.lib.baseworld2.activity.ArchiverActivity"></activity>
         <activity android:name="com.tianxia.lib.baseworld2.activity.ArchiverPageActivity"></activity>
+        <activity android:name="com.tianxia.lib.baseworld2.activity.RefSetActivity"></activity>
         <activity android:name="com.tianxia.lib.baseworld2.activity.RefSetSimpleActivity"></activity>
         <activity android:name="com.tianxia.lib.baseworld2.activity.SettingAboutActivity"></activity>
         <service android:name="com.tianxia.lib.baseworld2.upgrade.AppUpgradeService"></service>

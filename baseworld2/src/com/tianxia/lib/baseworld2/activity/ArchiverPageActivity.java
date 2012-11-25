@@ -27,7 +27,6 @@ public class ArchiverPageActivity extends AdapterActivity<StatuInfo>
     private View mAppHeaderBackDivider;
 
     private int mPage;
-    private String mTitle;
 
     private TextView mItemName;
     private TextView mItemText;
@@ -42,8 +41,8 @@ public class ArchiverPageActivity extends AdapterActivity<StatuInfo>
 
     @Override
     protected void setLayoutView() {
-        setContentView(R.layout.ref_set_simple);
-        setListView(R.id.ref_set_simple_list);
+        setContentView(R.layout.archiver_page);
+        setListView(R.id.archiver_page_list);
 
         mPage = getIntent().getIntExtra("page", 0);
 
@@ -127,7 +126,7 @@ public class ArchiverPageActivity extends AdapterActivity<StatuInfo>
     protected View getView(int position, View convertView) {
         View view = convertView;
         if(view == null){
-            view = LayoutInflater.from(this).inflate(R.layout.ref_set_simle_list_item, null);
+            view = LayoutInflater.from(this).inflate(R.layout.archiver_page_list_item, null);
         }
         mItemName = (TextView) view.findViewById(R.id.item_name);
         mItemName.setText(listData.get(position).name);

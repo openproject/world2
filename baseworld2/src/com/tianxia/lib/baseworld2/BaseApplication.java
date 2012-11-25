@@ -41,6 +41,7 @@ public abstract class BaseApplication extends Application {
 
     public static String mServerLatestUrl;
     public static String mServerPageUrl;
+    public static String mServerSetUrl;
     public static String mServerSeasonUrl;
 
     public static int mMaxPage;
@@ -73,6 +74,7 @@ public abstract class BaseApplication extends Application {
 
         mServerLatestUrl = mDomain + mAppId + "/data/json/latest.json";
         mServerPageUrl = mDomain + mAppId + "/data/json/pages/";
+        mServerSetUrl = mDomain + mAppId + "/data/json/set.json";
         mServerSeasonUrl = mDomain + mAppId + "/data/json/seasons/";
 
         if (Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED)) {

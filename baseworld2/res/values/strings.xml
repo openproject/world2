@@ -91,4 +91,6 @@
     <string name="archiver_title">归档</string>
     <string name="archiver_notice_text">按时间顺序历史归档，以分页形式查看。</string>
     <string name="archiver_page_title">归档.第%s页</string>
+    <string name="ref_set_title">精品合集</string>
+    <string name="ref_set_simple_title">精品合集.第%s季</string>
 </resources>

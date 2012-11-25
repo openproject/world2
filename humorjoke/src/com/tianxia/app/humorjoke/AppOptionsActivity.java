@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tianxia.lib.baseworld2.activity.OptionsActivity;
 import com.waps.AppConnect;
@@ -11,6 +12,7 @@ import com.waps.UpdatePointsNotifier;
 
 public class AppOptionsActivity extends OptionsActivity implements UpdatePointsNotifier{
 
+    private Button mItemBeautyJoke;
     private Button mItemPoints;
     private TextView mAppStatusText;
 
@@ -20,6 +22,8 @@ public class AppOptionsActivity extends OptionsActivity implements UpdatePointsN
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        mItemBeautyJoke = (Button) findViewById(R.id.item_beauty_joke);
+        mItemBeautyJoke.setOnClickListener(this);
         mItemPoints = (Button) findViewById(R.id.item_points);
         mItemPoints.setOnClickListener(this);
 
@@ -36,7 +40,9 @@ public class AppOptionsActivity extends OptionsActivity implements UpdatePointsN
     @Override
     public void onClick(View v) {
         super.onClick(v);
-        if (v == mItemPoints) {
+        if (v == mItemBeautyJoke) {
+            Toast.makeText(this, "为了下个版本更完美的集成，敬请期待!", Toast.LENGTH_LONG).show();
+        } else if (v == mItemPoints) {
             mNeedRefreshPoint = true;
             AppConnect.getInstance(this).showOffers(this);
         }

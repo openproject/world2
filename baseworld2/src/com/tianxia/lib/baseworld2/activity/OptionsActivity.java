@@ -16,6 +16,7 @@ public class OptionsActivity extends BaseActivity
     private View mAppMenu;
     protected LinearLayout mAdContainer;
 
+    private View mNavBaseSet;
     private View mNavBaseArchiver;
     private View mNavBaseExit;
 
@@ -38,10 +39,12 @@ public class OptionsActivity extends BaseActivity
         mAppMenu = findViewById(R.id.app_header_menu);
         mAppMenu.setOnClickListener(this);
 
-        mNavBaseExit = findViewById(R.id.item_base_exit);
+        mNavBaseSet = findViewById(R.id.item_base_set);
         mNavBaseArchiver = findViewById(R.id.item_base_archiver);
-        mNavBaseExit.setOnClickListener(this);
+        mNavBaseExit = findViewById(R.id.item_base_exit);
+        mNavBaseSet.setOnClickListener(this);
         mNavBaseArchiver.setOnClickListener(this);
+        mNavBaseExit.setOnClickListener(this);
 
         mAdContainer = (LinearLayout) findViewById(R.id.ad_container);
     }
@@ -50,9 +53,15 @@ public class OptionsActivity extends BaseActivity
     public void onClick(View v) {
         if (v == mNavBaseExit || v == mAppMenu) {
             onBackPressed();
+        } else if (v == mNavBaseSet) {
+            gotoSet();
         } else if (v == mNavBaseArchiver) {
             gotoArchiver();
         }
+    }
+    public void gotoSet() {
+        Intent intent = new Intent(this, RefSetActivity.class);
+        startActivity(intent);
     }
 
     public void gotoArchiver() {

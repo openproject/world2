@@ -4,6 +4,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,53 +19,48 @@ import com.tianxia.lib.baseworld2.cache.ConfigCache;
 import com.tianxia.lib.baseworld2.sync.http.AsyncHttpClient;
 import com.tianxia.lib.baseworld2.sync.http.AsyncHttpResponseHandler;
 import com.tianxia.lib.baseworld2.utils.NetworkUtils;
-import com.tianxia.widget.image.SmartImageView;
 
-public class RefSetSimpleActivity extends AdapterActivity<StatuInfo>
+public class RefSetActivity extends AdapterActivity<SetSummaryInfo>
     implements View.OnClickListener {
+
+    private static final int REF_SET_TYPE_SIMPLE = 1;
 
     private TextView mAppTitle;
     private Button mAppHeaderBack;
     private View mAppHeaderBackDivider;
 
-    private int mSeason;
-
-    private TextView mSeasonTitle;
-    private TextView mItemText;
-    private SmartImageView mItemMiddle;
+    private TextView mItemIndex;
+    private TextView mItemTitle;
+    private TextView mItemSummary;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setSeasonList(mSeason);
+        setSetList();
     }
 
     @Override
     protected void setLayoutView() {
-        setContentView(R.layout.ref_set_simple);
-        setListView(R.id.ref_set_simple_list);
-
-        mSeason = getIntent().getIntExtra("index", 0);
+        setContentView(R.layout.ref_set);
+        setListView(R.id.ref_set_list);
 
         mAppTitle = (TextView) findViewById(R.id.app_title);
         mAppHeaderBack = (Button) findViewById(R.id.app_header_back);
         mAppHeaderBackDivider = findViewById(R.id.app_header_back_divider);
 
-        mAppTitle.setText(getString(R.string.ref_set_simple_title, mSeason));
+        mAppTitle.setText(R.string.ref_set_title);
         mAppHeaderBack.setVisibility(View.VISIBLE);
         mAppHeaderBackDivider.setVisibility(View.VISIBLE);
 
-        mAppHeaderBack.setOnClickListener(this);
-
-        mSeasonTitle = (TextView) findViewById(R.id.ref_set_simple_title);
+        mAppHeaderBack.setOnClickListener(this); 
     }
 
-    private void setSeasonList(int seasonIndex) {
-        final String seasonUrl = BaseApplication.mServerSeasonUrl + seasonIndex + ".json";
-        String cacheConfigString = ConfigCache.getUrlCache(seasonUrl);
+    private void setSetList() {
+        final String setUrl = BaseApplication.mServerSetUrl;
+        String cacheConfigString = ConfigCache.getUrlCache(setUrl);
         if (cacheConfigString != null) {
-            showSeasonList(cacheConfigString);
+            showSetList(cacheConfigString);
         } else {
             // if network is unavaliable, just show fail at once
             if (BaseApplication.mNetWorkState == NetworkUtils.NETWORN_NONE) {
@@ -73,7 +70,7 @@ public class RefSetSimpleActivity extends AdapterActivity<StatuInfo>
             }
 
             AsyncHttpClient client = new AsyncHttpClient();
-            client.get(seasonUrl, new AsyncHttpResponseHandler(){
+            client.get(setUrl, new AsyncHttpResponseHandler(){
 
                 @Override
                 public void onStart() {
@@ -82,8 +79,8 @@ public class RefSetSimpleActivity extends AdapterActivity<StatuInfo>
                 @Override
                 public void onSuccess(String result){
                     try {
-                        showSeasonList(result);
-                        ConfigCache.setUrlCache(result, seasonUrl);
+                        showSetList(result);
+                        ConfigCache.setUrlCache(result, setUrl);
                     } catch (Exception e) {
                         listView.setAdapter(null);
 //                        showFailEmptyView();
@@ -101,26 +98,23 @@ public class RefSetSimpleActivity extends AdapterActivity<StatuInfo>
         }
     }
 
-    private void showSeasonList(String result) {
+    private void showSetList(String result) {
         try {
             JSONObject statusConfig = new JSONObject(result);
 
-            JSONArray statuList = statusConfig.getJSONArray("statuses");
-            StatuInfo statuInfo = null;
-            for (int i = 0; i < statuList.length(); i++) {
-                statuInfo = new StatuInfo();
-                statuInfo.text = statuList.getJSONObject(i).getString("text");
-                statuInfo.id = statuList.getJSONObject(i).getLong("id");
-                statuInfo.pic_thumbnail = statuList.getJSONObject(i).optString("pic_thumbnail");
+            JSONArray statuList = statusConfig.getJSONArray("list");
+            SetSummaryInfo setSummaryInfo = null;
+            for (int i = statuList.length() - 1; i >= 0; i--) {
+                setSummaryInfo = new SetSummaryInfo();
+                setSummaryInfo.type = statuList.getJSONObject(i).getInt("type");
+                setSummaryInfo.index = statuList.getJSONObject(i).getInt("index");
+                setSummaryInfo.title = statuList.getJSONObject(i).optString("title");
+                setSummaryInfo.summary = statuList.getJSONObject(i).optString("summary");
 
-                listData.add(statuInfo);
+                listData.add(setSummaryInfo);
             }
 
-            // update the season title
-            String seasonTitle = statusConfig.optString("title");
-            mSeasonTitle.setText(seasonTitle);
-
-            adapter = new  Adapter(RefSetSimpleActivity.this);
+            adapter = new  Adapter(RefSetActivity.this);
             listView.setAdapter(adapter);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -131,25 +125,28 @@ public class RefSetSimpleActivity extends AdapterActivity<StatuInfo>
     protected View getView(int position, View convertView) {
         View view = convertView;
         if(view == null){
-            view = LayoutInflater.from(this).inflate(R.layout.ref_set_simle_list_item, null);
+            view = LayoutInflater.from(this).inflate(R.layout.ref_set_list_item, null);
         }
 
-        mItemText = (TextView) view.findViewById(R.id.item_text);
-        mItemText.setText(listData.get(position).text);
-
-        mItemMiddle = (SmartImageView) view.findViewById(R.id.item_thumbnail);
-        if (listData.get(position).pic_thumbnail != null && !"".equals(listData.get(position).pic_thumbnail)) {
-            mItemMiddle.setImageUrl(listData.get(position).pic_thumbnail, R.drawable.icon, 0);
-            mItemMiddle.setVisibility(View.VISIBLE);
-        } else {
-            mItemMiddle.setVisibility(View.GONE);
-        }
+        mItemIndex = (TextView) view.findViewById(R.id.item_index);
+        mItemIndex.setText("第" + listData.get(position).index + "季");
+        mItemIndex.getPaint().setFakeBoldText(true);
+        mItemTitle = (TextView) view.findViewById(R.id.item_title);
+        mItemTitle.setText(listData.get(position).title);
+        mItemSummary = (TextView) view.findViewById(R.id.item_summary);
+        mItemSummary.setText("    " + listData.get(position).summary);
+        mItemSummary.setTypeface(Typeface.MONOSPACE,Typeface.ITALIC);
         return view;
     }
 
     @Override
     protected void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-        
+        SetSummaryInfo setSummaryInfo = listData.get(position);
+        if (setSummaryInfo.type == REF_SET_TYPE_SIMPLE) {
+            Intent intent = new Intent(this, RefSetSimpleActivity.class);
+            intent.putExtra("index", setSummaryInfo.index);
+            startActivity(intent);
+        }
     }
 
     @Override
