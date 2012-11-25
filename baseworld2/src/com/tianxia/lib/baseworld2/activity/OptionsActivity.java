@@ -59,6 +59,7 @@ public class OptionsActivity extends BaseActivity
             gotoArchiver();
         }
     }
+
     public void gotoSet() {
         Intent intent = new Intent(this, RefSetActivity.class);
         startActivity(intent);

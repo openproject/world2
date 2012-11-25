@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -7,10 +7,18 @@
     <include android:id="@+id/app_header"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/app_header_height"
+        android:layout_alignParentTop="true"
         layout="@layout/app_header" />
+    <include android:id="@+id/app_status"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/app_status_height"
+        android:layout_alignParentBottom="true"
+        layout="@layout/app_status_options" />
     <ListView android:id="@+id/ref_set_list"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_above="@id/app_status"
+        android:layout_below="@id/app_header"
         android:cacheColorHint="#00000000"
         android:paddingTop="12dip"
         android:paddingBottom="12dip"
@@ -19,4 +27,4 @@
         android:divider="@null"
         android:dividerHeight="12dip">
     </ListView>
-</LinearLayout>
+</RelativeLayout>

@@ -8,5 +8,6 @@ public class SetSummaryInfo
     public int index;
     public String title;
     public String summary;
+    public int right; // right control by points
 
 }

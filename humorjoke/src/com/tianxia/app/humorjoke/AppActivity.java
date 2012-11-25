@@ -38,6 +38,13 @@ public class AppActivity extends MainActivity implements UpdatePointsNotifier{
         startActivity(intent);
     }
 
+    @Override
+    protected void gotoRefSet(int season) {
+        Intent intent = new Intent(this, AppRefSetActivity.class);
+        intent.putExtra("index", season);
+        startActivity(intent);
+    }
+
     //获取成功
     @Override
     public void getUpdatePoints(String currencyName, int pointTotal) {

@@ -439,7 +439,7 @@ public class MainActivity extends AdapterActivity<StatuInfo>
     protected void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
         StatuInfo statuInfo = listData.get(position - 1);
         if (statuInfo.isSetSimple &&  statuInfo.ref != null) {
-            gotoSetSimple(Integer.valueOf(String.valueOf(statuInfo.ref)), statuInfo.name);
+            gotoRefSet(Integer.valueOf(String.valueOf(statuInfo.ref)));
             return;
         }
         gotoDetails(position - 1);
@@ -566,15 +566,9 @@ public class MainActivity extends AdapterActivity<StatuInfo>
         startActivity(intent);
     }
 
-    private void gotoSetSimple(int season, String title) {
-        if (season <= 0) {
-            return;
-        } else {
-            Intent intent = new Intent(this, RefSetSimpleActivity.class);
-            intent.putExtra("season", season);
-            intent.putExtra("title", title);
-            startActivity(intent);
-        }
+    protected void gotoRefSet(int season) {
+        Intent intent = new Intent(this, RefSetActivity.class);
+        startActivity(intent);
     }
 
     @Override

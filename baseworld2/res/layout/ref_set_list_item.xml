@@ -1,43 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/ref_set_list_item_bg">
+    <ImageView android:id="@+id/item_base_right"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingLeft="32dip"
-        android:paddingRight="32dip"
-        android:paddingTop="12dip"
-        android:paddingBottom="16dip"
-        android:background="@drawable/ref_set_list_item_bg">
-
-        <TextView
-            android:id="@+id/item_index"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:textColor="#6d6f72"
-            android:textSize="16sp" >
-        </TextView>
-
-        <View android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/ref_set_list_item_line"/>
-
-        <TextView
-            android:id="@+id/item_title"
+        android:src="@drawable/tag_points"
+        android:visibility="gone"
+        android:layout_alignParentRight="true"/>
+    <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textColor="#6d6f72"
-            android:textSize="15sp" >
-        </TextView>
+            android:orientation="vertical"
+            android:paddingLeft="24dip"
+            android:paddingRight="24dip"
+            android:paddingTop="12dip"
+            android:paddingBottom="16dip">
+            <TextView
+                android:id="@+id/item_index"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#6d6f72"
+                android:textSize="16sp" >
+            </TextView>
 
-        <TextView
-            android:id="@+id/item_summary"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#6d6f72"
-            android:textStyle="italic"
-            android:textSize="14sp" >
-        </TextView>
+            <View android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/ref_set_list_item_line"/>
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/item_title"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#6d6f72"
+                android:textSize="15sp" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/item_summary"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#6d6f72"
+                android:textStyle="italic"
+                android:textSize="14sp" >
+            </TextView>
+    </LinearLayout>
+</RelativeLayout>

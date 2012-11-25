@@ -1,5 +1,6 @@
 package com.tianxia.app.humorjoke;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -46,6 +47,12 @@ public class AppOptionsActivity extends OptionsActivity implements UpdatePointsN
             mNeedRefreshPoint = true;
             AppConnect.getInstance(this).showOffers(this);
         }
+    }
+
+    @Override
+    public void gotoSet() {
+        Intent intent = new Intent(this, AppRefSetActivity.class);
+        startActivity(intent);
     }
 
     @Override

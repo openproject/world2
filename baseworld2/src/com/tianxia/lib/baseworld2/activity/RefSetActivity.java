@@ -29,13 +29,18 @@ public class RefSetActivity extends AdapterActivity<SetSummaryInfo>
     private Button mAppHeaderBack;
     private View mAppHeaderBackDivider;
 
+    private View mItemRight;
     private TextView mItemIndex;
     private TextView mItemTitle;
     private TextView mItemSummary;
 
+    private int mIndex; // view index
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mIndex = getIntent().getIntExtra("index", 0);
 
         setSetList();
     }
@@ -110,12 +115,14 @@ public class RefSetActivity extends AdapterActivity<SetSummaryInfo>
                 setSummaryInfo.index = statuList.getJSONObject(i).getInt("index");
                 setSummaryInfo.title = statuList.getJSONObject(i).optString("title");
                 setSummaryInfo.summary = statuList.getJSONObject(i).optString("summary");
+                setSummaryInfo.right = statuList.getJSONObject(i).getInt("right");
 
                 listData.add(setSummaryInfo);
             }
 
             adapter = new  Adapter(RefSetActivity.this);
             listView.setAdapter(adapter);
+            listView.setSelection(listData.size() - mIndex);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -128,6 +135,12 @@ public class RefSetActivity extends AdapterActivity<SetSummaryInfo>
             view = LayoutInflater.from(this).inflate(R.layout.ref_set_list_item, null);
         }
 
+        mItemRight = view.findViewById(R.id.item_base_right);
+        if (showRightTag(position)) {
+            mItemRight.setVisibility(View.VISIBLE);
+        } else {
+            mItemRight.setVisibility(View.GONE);
+        }
         mItemIndex = (TextView) view.findViewById(R.id.item_index);
         mItemIndex.setText("第" + listData.get(position).index + "季");
         mItemIndex.getPaint().setFakeBoldText(true);
@@ -137,6 +150,10 @@ public class RefSetActivity extends AdapterActivity<SetSummaryInfo>
         mItemSummary.setText("    " + listData.get(position).summary);
         mItemSummary.setTypeface(Typeface.MONOSPACE,Typeface.ITALIC);
         return view;
+    }
+
+    protected boolean showRightTag(int position) {
+        return false;
     }
 
     @Override
