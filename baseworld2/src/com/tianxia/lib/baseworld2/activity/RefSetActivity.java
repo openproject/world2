@@ -122,7 +122,10 @@ public class RefSetActivity extends AdapterActivity<SetSummaryInfo>
 
             adapter = new  Adapter(RefSetActivity.this);
             listView.setAdapter(adapter);
-            listView.setSelection(listData.size() - mIndex);
+
+            if (mIndex > 0) {
+                listView.setSelection(listData.size() - mIndex);
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
