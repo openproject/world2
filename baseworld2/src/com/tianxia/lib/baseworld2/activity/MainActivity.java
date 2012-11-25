@@ -114,7 +114,7 @@ public class MainActivity extends AdapterActivity<StatuInfo>
         String cacheConfigString = ConfigCache.getUrlCache(BaseApplication.mServerLatestUrl);
         if (cacheConfigString != null) {
             showInfomationList(cacheConfigString);
-            checkNewVersion();
+            checkNewVersion(false);
         } else {
             // if network is unavaliable, just show fail at once
             if (BaseApplication.mNetWorkState == NetworkUtils.NETWORN_NONE) {
@@ -135,7 +135,7 @@ public class MainActivity extends AdapterActivity<StatuInfo>
                     try {
                         showInfomationList(result);
                         ConfigCache.setUrlCache(result, BaseApplication.mServerLatestUrl);
-                        checkNewVersion();
+                        checkNewVersion(false);
                     } catch (Exception e) {
                         listView.setAdapter(null);
                         showFailEmptyView();
@@ -217,6 +217,9 @@ public class MainActivity extends AdapterActivity<StatuInfo>
                     }
                     if (subType.length > 1 && "1".equals(subType[1].trim())) {
                         statuInfo.isSetSimple = true;
+                    }
+                    if (subType.length > 2 && "1".equals(subType[2].trim())) {
+                        statuInfo.isNewVersion = true;
                     }
                 }
 
@@ -438,6 +441,10 @@ public class MainActivity extends AdapterActivity<StatuInfo>
     @Override
     protected void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
         StatuInfo statuInfo = listData.get(position - 1);
+        if (statuInfo.isNewVersion) {
+            checkNewVersion(true);
+            return;
+        }
         if (statuInfo.isSetSimple &&  statuInfo.ref != null) {
             gotoRefSet(Integer.valueOf(String.valueOf(statuInfo.ref)));
             return;
@@ -523,8 +530,13 @@ public class MainActivity extends AdapterActivity<StatuInfo>
         }
     }
 
-    public void checkNewVersion(){
-        if (BaseApplication.mVersionCode < mLatestVersionCode && BaseApplication.mShowUpdate) {
+    /**
+     * check app new version
+     * @param isManual: app auto-detect upgrade or user hand click to download in list
+     */
+    public void checkNewVersion(boolean isManual){
+        if (BaseApplication.mVersionCode < mLatestVersionCode
+                && (BaseApplication.mShowUpdate || isManual)) {
             new AlertDialog.Builder(this)
                 .setTitle(R.string.check_new_version)
                 .setMessage(mLatestVersionUpdate)
@@ -545,6 +557,10 @@ public class MainActivity extends AdapterActivity<StatuInfo>
                 .create()
                 .show();
             BaseApplication.mShowUpdate = false;
+        }
+
+        if (BaseApplication.mVersionCode >= mLatestVersionCode && isManual) {
+            Toast.makeText(this, R.string.check_new_version_latest, Toast.LENGTH_SHORT).show();
         }
     }
 

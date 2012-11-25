@@ -17,12 +17,13 @@ public class StatuInfo implements Parcelable
     public String pic_middle;
     public String pic_original;
     public String from;
-    public String type; // Good, Set
+    public String type; // Good, Set, Download
 
     public Object ref;
     // extend attribute for ref
     public boolean isGood = false;
     public boolean isSetSimple = false;
+    public boolean isNewVersion = false;
 
     public static final Parcelable.Creator<StatuInfo> CREATOR = new Creator<StatuInfo>() {
         @Override
