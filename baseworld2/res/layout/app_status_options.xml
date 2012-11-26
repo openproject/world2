@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/app_status_right"
         android:textSize="@dimen/app_status_size"
-        android:textColor="@color/app_status_gray"/>
+        android:textColor="@color/app_status_gray"
+        android:text="@string/app_status_options_text"/>
 </LinearLayout>
 

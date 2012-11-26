@@ -157,6 +157,27 @@
                         android:src="@drawable/setting_arrow" />
                 </LinearLayout>
                 <TextView android:background="#ffd2d2d4" android:layout_width="fill_parent" android:layout_height="1.0px"/>
+                <LinearLayout android:id="@+id/setting_item_clear"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:clickable="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45.0dip"
+                    android:background="@drawable/selector_item_middle">
+                    <TextView
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:text="清除缓存"
+                        android:layout_marginLeft="10.0dip"
+                        android:layout_weight="1.0"
+                        style="@style/app_setting_list_item_title"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="12.0dip"
+                        android:src="@drawable/setting_arrow" />
+                </LinearLayout>
+                <TextView android:background="#ffd2d2d4" android:layout_width="fill_parent" android:layout_height="1.0px"/>
                 <LinearLayout android:id="@+id/setting_item_upgrade"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"

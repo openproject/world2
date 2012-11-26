@@ -79,6 +79,7 @@
     <string name="app_header_menu_1">搜索</string>
     <string name="app_notice_text">每天持续更新，在设置里面还可以去广告哦~</string>
     <string name="app_notice_options_text">副版，主要提供一些更精彩的内容、VIP福利等！</string>
+    <string name="app_status_options_text">您的支持，是我们精益求精的动力!</string>
 
     <string name="main_options">选项</string>
     <string name="main_options_share">分享</string>
