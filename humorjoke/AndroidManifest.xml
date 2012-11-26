@@ -49,9 +49,9 @@
         <activity android:name="com.tianxia.lib.baseworld2.activity.SettingAboutActivity"></activity>
         <service android:name="com.tianxia.lib.baseworld2.upgrade.AppUpgradeService"></service>
 
-        <activity android:name="com.feedback.ui.SendFeedback" android:windowSoftInputMode="adjustResize" />
-        <activity android:name="com.feedback.ui.FeedbackConversations" />
-        <activity android:name="com.feedback.ui.FeedbackConversation" android:configChanges="keyboard" />
+        <activity android:name="com.umeng.fb.ui.SendFeedback" android:windowSoftInputMode="adjustResize" />
+        <activity android:name="com.umeng.fb.ui.FeedbackConversations" />
+        <activity android:name="com.umeng.fb.ui.FeedbackConversation" android:configChanges="keyboard" />
 
         <activity android:name="com.waps.OffersWebView" android:configChanges="keyboardHidden|orientation"/>
     </application>
