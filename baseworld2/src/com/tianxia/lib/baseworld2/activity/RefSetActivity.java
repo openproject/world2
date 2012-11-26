@@ -58,19 +58,25 @@ public class RefSetActivity extends AdapterActivity<SetSummaryInfo>
         mAppHeaderBack.setVisibility(View.VISIBLE);
         mAppHeaderBackDivider.setVisibility(View.VISIBLE);
 
-        mAppHeaderBack.setOnClickListener(this); 
+        mAppHeaderBack.setOnClickListener(this);
+
+        showLoadingEmptyView();
     }
 
     private void setSetList() {
         final String setUrl = BaseApplication.mServerSetUrl;
         String cacheConfigString = ConfigCache.getUrlCache(setUrl);
         if (cacheConfigString != null) {
-            showSetList(cacheConfigString);
+            try {
+                showSetList(cacheConfigString);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } else {
             // if network is unavaliable, just show fail at once
             if (BaseApplication.mNetWorkState == NetworkUtils.NETWORN_NONE) {
                 listView.setAdapter(null);
-//                showFailEmptyView();
+                showFailEmptyView();
                 return;
             }
 
@@ -88,7 +94,7 @@ public class RefSetActivity extends AdapterActivity<SetSummaryInfo>
                         ConfigCache.setUrlCache(result, setUrl);
                     } catch (Exception e) {
                         listView.setAdapter(null);
-//                        showFailEmptyView();
+                        showFailEmptyView();
                         e.printStackTrace();
                     }
                 }
@@ -96,38 +102,34 @@ public class RefSetActivity extends AdapterActivity<SetSummaryInfo>
                 @Override
                 public void onFailure(Throwable arg0) {
                     listView.setAdapter(null);
-//                    showFailEmptyView();
+                    showFailEmptyView();
                 }
 
             });
         }
     }
 
-    private void showSetList(String result) {
-        try {
-            JSONObject statusConfig = new JSONObject(result);
+    private void showSetList(String result) throws JSONException {
+        JSONObject statusConfig = new JSONObject(result);
 
-            JSONArray statuList = statusConfig.getJSONArray("list");
-            SetSummaryInfo setSummaryInfo = null;
-            for (int i = statuList.length() - 1; i >= 0; i--) {
-                setSummaryInfo = new SetSummaryInfo();
-                setSummaryInfo.type = statuList.getJSONObject(i).getInt("type");
-                setSummaryInfo.index = statuList.getJSONObject(i).getInt("index");
-                setSummaryInfo.title = statuList.getJSONObject(i).optString("title");
-                setSummaryInfo.summary = statuList.getJSONObject(i).optString("summary");
-                setSummaryInfo.right = statuList.getJSONObject(i).getInt("right");
+        JSONArray statuList = statusConfig.getJSONArray("list");
+        SetSummaryInfo setSummaryInfo = null;
+        for (int i = statuList.length() - 1; i >= 0; i--) {
+            setSummaryInfo = new SetSummaryInfo();
+            setSummaryInfo.type = statuList.getJSONObject(i).getInt("type");
+            setSummaryInfo.index = statuList.getJSONObject(i).getInt("index");
+            setSummaryInfo.title = statuList.getJSONObject(i).optString("title");
+            setSummaryInfo.summary = statuList.getJSONObject(i).optString("summary");
+            setSummaryInfo.right = statuList.getJSONObject(i).getInt("right");
 
-                listData.add(setSummaryInfo);
-            }
+            listData.add(setSummaryInfo);
+        }
 
-            adapter = new  Adapter(RefSetActivity.this);
-            listView.setAdapter(adapter);
+        adapter = new Adapter(RefSetActivity.this);
+        listView.setAdapter(adapter);
 
-            if (mIndex > 0) {
-                listView.setSelection(listData.size() - mIndex);
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
+        if (mIndex > 0) {
+            listView.setSelection(listData.size() - mIndex);
         }
     }
 

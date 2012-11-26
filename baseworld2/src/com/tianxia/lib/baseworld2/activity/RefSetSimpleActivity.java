@@ -57,18 +57,25 @@ public class RefSetSimpleActivity extends AdapterActivity<StatuInfo>
         mAppHeaderBack.setOnClickListener(this);
 
         mSeasonTitle = (TextView) findViewById(R.id.ref_set_simple_title);
+
+        showLoadingEmptyView();
     }
 
     private void setSeasonList(int seasonIndex) {
         final String seasonUrl = BaseApplication.mServerSeasonUrl + seasonIndex + ".json";
         String cacheConfigString = ConfigCache.getUrlCache(seasonUrl);
         if (cacheConfigString != null) {
-            showSeasonList(cacheConfigString);
+            try {
+                showSeasonList(cacheConfigString);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } else {
             // if network is unavaliable, just show fail at once
             if (BaseApplication.mNetWorkState == NetworkUtils.NETWORN_NONE) {
                 listView.setAdapter(null);
-//                showFailEmptyView();
+                showFailEmptyView();
+                mSeasonTitle.setText(R.string.app_loading_fail);
                 return;
             }
 
@@ -86,7 +93,8 @@ public class RefSetSimpleActivity extends AdapterActivity<StatuInfo>
                         ConfigCache.setUrlCache(result, seasonUrl);
                     } catch (Exception e) {
                         listView.setAdapter(null);
-//                        showFailEmptyView();
+                        showFailEmptyView();
+                        mSeasonTitle.setText(R.string.app_loading_fail);
                         e.printStackTrace();
                     }
                 }
@@ -94,37 +102,34 @@ public class RefSetSimpleActivity extends AdapterActivity<StatuInfo>
                 @Override
                 public void onFailure(Throwable arg0) {
                     listView.setAdapter(null);
-//                    showFailEmptyView();
+                    showFailEmptyView();
+                    mSeasonTitle.setText(R.string.app_loading_fail);
                 }
 
             });
         }
     }
 
-    private void showSeasonList(String result) {
-        try {
-            JSONObject statusConfig = new JSONObject(result);
+    private void showSeasonList(String result) throws JSONException {
+        JSONObject statusConfig = new JSONObject(result);
 
-            JSONArray statuList = statusConfig.getJSONArray("statuses");
-            StatuInfo statuInfo = null;
-            for (int i = 0; i < statuList.length(); i++) {
-                statuInfo = new StatuInfo();
-                statuInfo.text = statuList.getJSONObject(i).getString("text");
-                statuInfo.id = statuList.getJSONObject(i).getLong("id");
-                statuInfo.pic_thumbnail = statuList.getJSONObject(i).optString("pic_thumbnail");
+        JSONArray statuList = statusConfig.getJSONArray("statuses");
+        StatuInfo statuInfo = null;
+        for (int i = 0; i < statuList.length(); i++) {
+            statuInfo = new StatuInfo();
+            statuInfo.text = statuList.getJSONObject(i).getString("text");
+            statuInfo.id = statuList.getJSONObject(i).getLong("id");
+            statuInfo.pic_thumbnail = statuList.getJSONObject(i).optString("pic_thumbnail");
 
-                listData.add(statuInfo);
-            }
-
-            // update the season title
-            String seasonTitle = statusConfig.optString("title");
-            mSeasonTitle.setText(seasonTitle);
-
-            adapter = new  Adapter(RefSetSimpleActivity.this);
-            listView.setAdapter(adapter);
-        } catch (JSONException e) {
-            e.printStackTrace();
+            listData.add(statuInfo);
         }
+
+        // update the season title
+        String seasonTitle = statusConfig.optString("title");
+        mSeasonTitle.setText(seasonTitle);
+
+        adapter = new Adapter(RefSetSimpleActivity.this);
+        listView.setAdapter(adapter);
     }
 
     @Override

@@ -55,18 +55,24 @@ public class ArchiverPageActivity extends AdapterActivity<StatuInfo>
         mAppHeaderBackDivider.setVisibility(View.VISIBLE);
 
         mAppHeaderBack.setOnClickListener(this);
+
+        showLoadingEmptyView();
     }
 
     private void setPageList(int pageIndex) {
         final String pageUrl = BaseApplication.mServerPageUrl + pageIndex + ".json";
         String cacheConfigString = ConfigCache.getUrlCache(pageUrl);
         if (cacheConfigString != null) {
-            showSeasonList(cacheConfigString);
+            try {
+                showSeasonList(cacheConfigString);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } else {
             // if network is unavaliable, just show fail at once
             if (BaseApplication.mNetWorkState == NetworkUtils.NETWORN_NONE) {
                 listView.setAdapter(null);
-//                showFailEmptyView();
+                showFailEmptyView();
                 return;
             }
 
@@ -84,7 +90,7 @@ public class ArchiverPageActivity extends AdapterActivity<StatuInfo>
                         ConfigCache.setUrlCache(result, pageUrl);
                     } catch (Exception e) {
                         listView.setAdapter(null);
-//                        showFailEmptyView();
+                        showFailEmptyView();
                         e.printStackTrace();
                     }
                 }
@@ -92,34 +98,30 @@ public class ArchiverPageActivity extends AdapterActivity<StatuInfo>
                 @Override
                 public void onFailure(Throwable arg0) {
                     listView.setAdapter(null);
-//                    showFailEmptyView();
+                    showFailEmptyView();
                 }
 
             });
         }
     }
 
-    private void showSeasonList(String result) {
-        try {
-            JSONObject statusConfig = new JSONObject(result);
+    private void showSeasonList(String result) throws JSONException {
+        JSONObject statusConfig = new JSONObject(result);
 
-            JSONArray statuList = statusConfig.getJSONArray("statuses");
-            StatuInfo statuInfo = null;
-            for (int i = statuList.length() - 1; i >= 0; i--) {
-                statuInfo = new StatuInfo();
-                statuInfo.name = statuList.getJSONObject(i).getString("name");
-                statuInfo.author = statuList.getJSONObject(i).getString("author");
-                statuInfo.text = statuList.getJSONObject(i).getString("text");
-                statuInfo.id = statuList.getJSONObject(i).getLong("id");
-                statuInfo.pic_thumbnail = statuList.getJSONObject(i).optString("pic_thumbnail");
+        JSONArray statuList = statusConfig.getJSONArray("statuses");
+        StatuInfo statuInfo = null;
+        for (int i = statuList.length() - 1; i >= 0; i--) {
+            statuInfo = new StatuInfo();
+            statuInfo.name = statuList.getJSONObject(i).getString("name");
+            statuInfo.author = statuList.getJSONObject(i).getString("author");
+            statuInfo.text = statuList.getJSONObject(i).getString("text");
+            statuInfo.id = statuList.getJSONObject(i).getLong("id");
+            statuInfo.pic_thumbnail = statuList.getJSONObject(i).optString("pic_thumbnail");
 
-                listData.add(statuInfo);
-            }
-            adapter = new  Adapter(ArchiverPageActivity.this);
-            listView.setAdapter(adapter);
-        } catch (JSONException e) {
-            e.printStackTrace();
+            listData.add(statuInfo);
         }
+        adapter = new Adapter(ArchiverPageActivity.this);
+        listView.setAdapter(adapter);
     }
 
     @Override

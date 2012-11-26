@@ -113,8 +113,12 @@ public class MainActivity extends AdapterActivity<StatuInfo>
     private void setInfomationList() {
         String cacheConfigString = ConfigCache.getUrlCache(BaseApplication.mServerLatestUrl);
         if (cacheConfigString != null) {
-            showInfomationList(cacheConfigString);
-            checkNewVersion(false);
+            try {
+                showInfomationList(cacheConfigString);
+                checkNewVersion(false);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } else {
             // if network is unavaliable, just show fail at once
             if (BaseApplication.mNetWorkState == NetworkUtils.NETWORN_NONE) {
@@ -157,7 +161,11 @@ public class MainActivity extends AdapterActivity<StatuInfo>
         final String pageUrl = BaseApplication.mServerPageUrl + pageIndex + ".json";
         String cacheConfigString = ConfigCache.getUrlCache(pageUrl);
         if (cacheConfigString != null) {
-            showInfomationList(cacheConfigString);
+            try {
+                showInfomationList(cacheConfigString);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
             ((RefreshListView)listView).finishFootView();
         } else {
             AsyncHttpClient client = new AsyncHttpClient();
@@ -165,8 +173,12 @@ public class MainActivity extends AdapterActivity<StatuInfo>
 
                 @Override
                 public void onSuccess(String result){
-                    showInfomationList(result);
-                    ConfigCache.setUrlCache(result, pageUrl);
+                    try {
+                        showInfomationList(result);
+                        ConfigCache.setUrlCache(result, pageUrl);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
                     ((RefreshListView)listView).finishFootView();
                 }
 
@@ -181,66 +193,63 @@ public class MainActivity extends AdapterActivity<StatuInfo>
         }
     }
 
-    private void showInfomationList(String result) {
-        try {
-            JSONObject statusConfig = new JSONObject(result);
+    private void showInfomationList(String result) throws JSONException {
+        JSONObject statusConfig = new JSONObject(result);
 
-            mLatestVersionCode = statusConfig.optInt("version-code");
-            mLatestVersionUpdate = statusConfig.optString("version-update");
-            mLatestVersionDownload = BaseApplication.mDomain + statusConfig.optString("version-download");
-            if (mLatestVersionDownload != null) {
-                BaseApplication.mApkDownloadUrl = mLatestVersionDownload;
-            }
+        mLatestVersionCode = statusConfig.optInt("version-code");
+        mLatestVersionUpdate = statusConfig.optString("version-update");
+        mLatestVersionDownload = BaseApplication.mDomain
+                + statusConfig.optString("version-download");
+        if (mLatestVersionDownload != null) {
+            BaseApplication.mApkDownloadUrl = mLatestVersionDownload;
+        }
 
-            JSONArray statuList = statusConfig.getJSONArray("statuses");
-            StatuInfo statuInfo = null;
-            for (int i = statuList.length() - 1; i >= 0; i--) {
-                statuInfo = new StatuInfo();
-                statuInfo.created = statuList.getJSONObject(i).optString("created_at");
-                statuInfo.avatar = statuList.getJSONObject(i).getString("avatar");
-                statuInfo.name = statuList.getJSONObject(i).getString("name");
-                statuInfo.author = statuList.getJSONObject(i).getString("author");
-                statuInfo.text = statuList.getJSONObject(i).getString("text");
-                statuInfo.id = statuList.getJSONObject(i).getLong("id");
-                statuInfo.pic_thumbnail = statuList.getJSONObject(i).optString("pic_thumbnail");
-                statuInfo.pic_middle = statuList.getJSONObject(i).optString("pic_middle");
-                statuInfo.pic_original = statuList.getJSONObject(i).optString("pic_original");
-                statuInfo.from = statuList.getJSONObject(i).optString("from");
-                statuInfo.type = statuList.getJSONObject(i).optString("type");
-                statuInfo.ref = statuList.getJSONObject(i).opt("ref");
+        JSONArray statuList = statusConfig.getJSONArray("statuses");
+        StatuInfo statuInfo = null;
+        for (int i = statuList.length() - 1; i >= 0; i--) {
+            statuInfo = new StatuInfo();
+            statuInfo.created = statuList.getJSONObject(i).optString("created_at");
+            statuInfo.avatar = statuList.getJSONObject(i).getString("avatar");
+            statuInfo.name = statuList.getJSONObject(i).getString("name");
+            statuInfo.author = statuList.getJSONObject(i).getString("author");
+            statuInfo.text = statuList.getJSONObject(i).getString("text");
+            statuInfo.id = statuList.getJSONObject(i).getLong("id");
+            statuInfo.pic_thumbnail = statuList.getJSONObject(i).optString("pic_thumbnail");
+            statuInfo.pic_middle = statuList.getJSONObject(i).optString("pic_middle");
+            statuInfo.pic_original = statuList.getJSONObject(i).optString("pic_original");
+            statuInfo.from = statuList.getJSONObject(i).optString("from");
+            statuInfo.type = statuList.getJSONObject(i).optString("type");
+            statuInfo.ref = statuList.getJSONObject(i).opt("ref");
 
-                // for simpler using later, fill the status info extend attribute
-                if (statuInfo.type != null && !"".equals(statuInfo.type)) {
-                    String[] subType = statuInfo.type.split(",");
-                    if (subType.length > 0 && "1".equals(subType[0].trim())) {
-                        statuInfo.isGood = true;
-                    }
-                    if (subType.length > 1 && "1".equals(subType[1].trim())) {
-                        statuInfo.isSetSimple = true;
-                    }
-                    if (subType.length > 2 && "1".equals(subType[2].trim())) {
-                        statuInfo.isNewVersion = true;
-                    }
+            // for simpler using later, fill the status info extend attribute
+            if (statuInfo.type != null && !"".equals(statuInfo.type)) {
+                String[] subType = statuInfo.type.split(",");
+                if (subType.length > 0 && "1".equals(subType[0].trim())) {
+                    statuInfo.isGood = true;
                 }
-
-                listData.add(statuInfo);
-            }
-            if (pageIndex == 0) {
-                adapter = new Adapter(MainActivity.this);
-                listView.setAdapter(adapter);
-            } else {
-                adapter.notifyDataSetChanged();
+                if (subType.length > 1 && "1".equals(subType[1].trim())) {
+                    statuInfo.isSetSimple = true;
+                }
+                if (subType.length > 2 && "1".equals(subType[2].trim())) {
+                    statuInfo.isNewVersion = true;
+                }
             }
 
-            pageIndex = statusConfig.getInt("page");
-            BaseApplication.mMaxPage = pageIndex - 1;
-            if (pageIndex == 1) {
-                //if pageIndex == 1 means the page is the last page
-                //so do not need show More FooterView any more
-                ((RefreshListView)listView).removeFootView();
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
+            listData.add(statuInfo);
+        }
+        if (pageIndex == 0) {
+            adapter = new Adapter(MainActivity.this);
+            listView.setAdapter(adapter);
+        } else {
+            adapter.notifyDataSetChanged();
+        }
+
+        pageIndex = statusConfig.getInt("page");
+        BaseApplication.mMaxPage = pageIndex - 1;
+        if (pageIndex == 1) {
+            // if pageIndex == 1 means the page is the last page
+            // so do not need show More FooterView any more
+            ((RefreshListView) listView).removeFootView();
         }
     }
 
@@ -516,7 +525,11 @@ public class MainActivity extends AdapterActivity<StatuInfo>
             listData.clear();
             pageIndex = 0;
             ((RefreshListView)listView).addFootView();
-            showInfomationList((String)obj);
+            try {
+                showInfomationList((String)obj);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     };
 
