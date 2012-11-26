@@ -18,7 +18,11 @@ public class AppSettingActivity extends SettingActivity implements UpdatePointsN
 
     @Override
     public void showAdCredits() {
-        mSettingItemAd_Credits.setText(AppApplication.mAdPoints + "");
+        if (AppApplication.mAdPoints > -1) {
+            mSettingItemAd_Credits.setText(AppApplication.mAdPoints + "");
+        } else {
+            mSettingItemAd_Credits.setText("...");
+        }
         //获取积分
         AppConnect.getInstance(this).getPoints(this);
     }
