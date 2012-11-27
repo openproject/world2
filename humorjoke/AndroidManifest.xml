@@ -41,7 +41,7 @@
         <activity android:name=".AppSettingActivity" />
         <activity android:name=".AppDetailsActivity" />
         <activity android:name=".AppOptionsActivity" />
-        <activity android:name=".AppRefSetActivity"></activity>
+        <activity android:name=".AppRefSetActivity" />
         <activity android:name="com.tianxia.lib.baseworld2.activity.ArchiverActivity"></activity>
         <activity android:name="com.tianxia.lib.baseworld2.activity.ArchiverPageActivity"></activity>
         <activity android:name="com.tianxia.lib.baseworld2.activity.RefSetSimpleActivity"></activity>

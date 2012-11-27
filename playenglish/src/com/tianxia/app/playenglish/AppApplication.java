@@ -9,4 +9,5 @@ public class AppApplication extends BaseApplication {
     public static final String SHARE_CREDITS = "credits";
     public static final String SHARE_CREDITS_LAST_TIME = "credits_time";
 
+    public static int mAdPoints = -1;
 }
