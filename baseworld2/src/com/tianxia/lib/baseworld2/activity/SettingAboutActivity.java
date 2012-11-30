@@ -88,6 +88,7 @@ public class SettingAboutActivity extends BaseActivity{
         } else if ("moto".equals(channelKey)) { result = "摩托版";
         } else if ("xiaomi".equals(channelKey)) { result = "小米版";
         } else if ("lenovo".equals(channelKey)) { result = "联想版";
+        } else if ("uc".equals(channelKey)) { result = "UC版";
         } else { result = "山寨版";}
         return result;
     }

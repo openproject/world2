@@ -2,7 +2,7 @@
 basedir=$(cd "$(dirname "$0")";pwd)
 cd $basedir
 
-markets="hiapk goapk mumayi eoe nduo dev"
+markets="hiapk goapk uc mumayi eoe nduo dev"
 #markets="youmi 10020 goapk dev"
 for market in $markets
 do
