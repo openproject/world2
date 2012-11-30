@@ -10,4 +10,6 @@
     <string name="setting_share_app_body">向你分享一个精彩应用《幽默笑话》,让您每天都过的开心快乐！下载地址:</string>
 
     <string name="app_notice_options_text">副版，主要提供一些更精彩的内容、福利等！</string>
+
+    <string name="options_title">幽默笑话副版</string>
 </resources>

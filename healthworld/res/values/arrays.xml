@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="nav_value">
+        <item>index</item>
+        <item>http://wap.39.net/</item>
+        <item>http://wap.huanqiu.com/pd.html?id=64</item>
+    </string-array>
+    <string-array name="nav_text">
+        <item>精选</item>
+        <item>39健康</item>
+        <item>环球网健康</item>
+    </string-array>
+</resources>
