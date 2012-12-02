@@ -66,6 +66,7 @@ public class SettingAboutActivity extends BaseActivity{
         } else if ("official".equals(channelKey)) { result = "官方版";
         } else if ("google".equals(channelKey)) { result = "谷歌版";
         } else if ("appchina".equals(channelKey)) { result = "应用汇版";
+        } else if ("youmi".equals(channelKey)) { result = "有米版";
         } else if ("waps".equals(channelKey)) { result = "万普版";
         } else if ("gfan".equals(channelKey)) { result = "机锋版";
         } else if ("91".equals(channelKey)) { result = "91版";
