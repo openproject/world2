@@ -7,8 +7,9 @@
 
 使用说明
 --------
-- 1. Create a android keystore which should locate in world2 root dir for packaging project to apk
-- 2. Define some properties by build.xml's var, named it keystore.properties to world2 root
+- 1. 创建keystore
+- 2. 定义属性storepass, keypass, alias的值，写入文件keystore.properties，配合keystore生成APK
+- 3. 执行各工程下的build.sh，编译出对应的APK
 
 分市场编译
 --------
