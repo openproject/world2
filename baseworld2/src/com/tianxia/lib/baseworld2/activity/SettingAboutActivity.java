@@ -77,6 +77,7 @@ public class SettingAboutActivity extends BaseActivity{
         } else if ("nduo".equals(channelKey)) { result = "N多版";
         } else if ("feiliu".equals(channelKey)) { result = "飞流版";
         } else if ("crossmo".equals(channelKey)) { result = "十字猫版";
+        } else if ("liantong".equals(channelKey)) { result = "联通版";
         } else if ("huawei".equals(channelKey)) { result = "智汇云版";
         } else if ("qq".equals(channelKey)) { result = "腾讯版";
         } else if ("3g".equals(channelKey)) { result = "3G版";
@@ -89,6 +90,9 @@ public class SettingAboutActivity extends BaseActivity{
         } else if ("moto".equals(channelKey)) { result = "摩托版";
         } else if ("xiaomi".equals(channelKey)) { result = "小米版";
         } else if ("lenovo".equals(channelKey)) { result = "联想版";
+        } else if ("zhuamob".equals(channelKey)) { result = "抓猫版";
+        } else if ("iandroid".equals(channelKey)) { result = "爱卓版";
+        } else if ("imobile".equals(channelKey)) { result = "手机之家版";
         } else if ("uc".equals(channelKey)) { result = "UC版";
         } else { result = "山寨版";}
         return result;
