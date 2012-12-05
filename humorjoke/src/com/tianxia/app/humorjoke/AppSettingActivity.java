@@ -12,8 +12,13 @@ public class AppSettingActivity extends SettingActivity implements UpdatePointsN
 
     @Override
     public void showAdOffers() {
-         mNeedRefreshPoint = true;
-         AppConnect.getInstance(this).showOffers(this);
+        mNeedRefreshPoint = true;
+        AppConnect.getInstance(this).showOffers(this);
+    }
+
+    @Override
+    protected void showSelfApps() {
+        AppConnect.getInstance(this).showMore(this);
     }
 
     @Override

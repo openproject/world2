@@ -71,6 +71,33 @@
                         style="@style/app_setting_list_item_description"/>
                 </RelativeLayout>
                 <TextView android:background="#ffd2d2d4" android:layout_width="fill_parent" android:layout_height="1.0px"/>
+                <LinearLayout android:id="@+id/setting_item_selfapp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:clickable="true"
+                    android:layout_width="fill_parent"
+                    android:layout_height="44.9dip"
+                    android:background="@drawable/selector_item_middle">
+                    <TextView
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:text="杰风出品 必属精品"
+                        android:layout_marginLeft="10.0dip"
+                        android:layout_weight="1.0"
+                        style="@style/app_setting_list_item_title"/>
+                    <TextView
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10.0dip"
+                        android:text="1.6.5"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="12.0dip"
+                        android:src="@drawable/setting_arrow" />
+                </LinearLayout>
+                <TextView android:background="#ffd2d2d4" android:layout_width="fill_parent" android:layout_height="1.0px"/>
                 <LinearLayout android:id="@+id/setting_item_donate"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"

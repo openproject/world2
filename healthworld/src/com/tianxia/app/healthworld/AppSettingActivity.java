@@ -17,6 +17,11 @@ public class AppSettingActivity extends SettingActivity implements UpdatePointsN
     }
 
     @Override
+    protected void showSelfApps() {
+        AppConnect.getInstance(this).showMore(this);
+    }
+
+    @Override
     public void showAdCredits() {
         if (AppApplication.mAdPoints > -1) {
             mSettingItemAd_Credits.setText(AppApplication.mAdPoints + "");

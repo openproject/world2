@@ -33,6 +33,7 @@ public class SettingActivity extends BaseActivity
     private View mAppHeaderBackDivider;
 
     private View mSettingItemAd;
+    private View mSettingItemSelfApp;
     private View mSettingItemDonate;
     private View mSettingItemShare;
     private View mSettingItemMark;
@@ -58,6 +59,7 @@ public class SettingActivity extends BaseActivity
         mAppHeaderBackDivider = findViewById(R.id.app_header_back_divider);
 
         mSettingItemAd = findViewById(R.id.setting_item_ad);
+        mSettingItemSelfApp = findViewById(R.id.setting_item_selfapp);
         mSettingItemDonate = findViewById(R.id.setting_item_donate);
         mSettingItemShare = findViewById(R.id.setting_item_share);
         mSettingItemMark = findViewById(R.id.setting_item_mark);
@@ -75,6 +77,7 @@ public class SettingActivity extends BaseActivity
         mAppHeaderBack.setOnClickListener(this);
 
         mSettingItemAd.setOnClickListener(this);
+        mSettingItemSelfApp.setOnClickListener(this);
         mSettingItemDonate.setOnClickListener(this);
         mSettingItemShare.setOnClickListener(this);
         mSettingItemMark.setOnClickListener(this);
@@ -96,6 +99,9 @@ public class SettingActivity extends BaseActivity
     protected void showAdOffers() {
     }
 
+    protected void showSelfApps() {
+    }
+
     @Override
     public void onClick(View v) {
         if (v == mAppHeaderBack) {
@@ -103,6 +109,8 @@ public class SettingActivity extends BaseActivity
         } else if (v == mSettingItemAd) {
             //display the ad list
             showAdOffers();
+        } else if (v == mSettingItemSelfApp){
+            showSelfApps();
         } else if (v == mSettingItemDonate) {
 
             AlixPay alixPay = new AlixPay(this);

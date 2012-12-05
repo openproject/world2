@@ -15,7 +15,7 @@ public class AppActivity extends MainActivity {
 
     @Override
     public void displayAd() {
-        AdManager.init(this,"e266585102e08607", "ba91cfc1eed8f514", 30, false);
+        AdManager.init(this,"c9976bb1456bbfa8", "0d3ae1d6056a542d", 30, false);
         try {
             mAdContainer.removeAllViews();
             mAdView = new AdView(this);
