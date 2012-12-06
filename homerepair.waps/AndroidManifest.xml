@@ -19,10 +19,10 @@
         android:label="@string/app_name"
         android:icon="@drawable/icon"
         android:theme="@android:style/Theme.Black.NoTitleBar">
-        <meta-data android:value="4f672e2352701550360000c9" android:name="UMENG_APPKEY" />
+        <meta-data android:value="50c0ad755270151be300000d" android:name="UMENG_APPKEY" />
         <meta-data android:value="dev" android:name="UMENG_CHANNEL"/>
         <!--以下属性为应用ID,从万普后台获取-->
-        <meta-data android:name="WAPS_ID" android:value="923cfb1a970c051eccd0af856bd3752c" />
+        <meta-data android:name="WAPS_ID" android:value="a4d9b7afb14e06fccc6ef9db20cf1c06" />
         <!--以下属性为分发渠道ID,编码表参见本文档末附表-->
         <meta-data android:value="dev" android:name="WAPS_PID"/>
         <activity android:name="com.tianxia.lib.baseworld2.waps.AppActivity"
