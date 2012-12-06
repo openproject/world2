@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_id">humorjoke</string>
+    <string name="app_name">旅游风光</string>
+
+    <string name="setting_about_subject">旅游风光\nTour Scenery</string>
+    <string name="setting_about_description">每天饮食,常识等资讯，您的健康小助手！</string>
+
+    <string name="setting_share_app_subject">向你分享一个精彩应用《旅游风光》</string>
+    <string name="setting_share_app_body">向你分享一个精彩应用《旅游风光》,每天饮食,常识等资讯，您的健康小助手，下载地址:</string>
+
+    <string name="options_status_text">你的当前积分为%s分</string>
+    <string name="options_status_loading">正在获取积分中....</string>
+    <string name="options_status_fail">可能网络不佳，获取积分失败.</string>
+
+    <string name="options_title">旅游风光副版</string>
+</resources>
