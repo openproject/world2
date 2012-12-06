@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/baseworld2/baseworld2.iml" filepath="$PROJECT_DIR$/baseworld2/baseworld2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/baseworld2.waps/baseworld2.waps.iml" filepath="$PROJECT_DIR$/baseworld2.waps/baseworld2.waps.iml" />
+      <module fileurl="file://$PROJECT_DIR$/homerepair.waps/homerepair.waps.iml" filepath="$PROJECT_DIR$/homerepair.waps/homerepair.waps.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tourscenery.waps/tourscenery.waps.iml" filepath="$PROJECT_DIR$/tourscenery.waps/tourscenery.waps.iml" />
+      <module fileurl="file://$PROJECT_DIR$/world2.iml" filepath="$PROJECT_DIR$/world2.iml" />
+    </modules>
+  </component>
+</project>
+

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="libs1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/baseworld2.waps/libs/AppOffer_1.7.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/baseworld2.waps/libs/alipay_msp.jar!/" />
+      <root url="jar://$PROJECT_DIR$/baseworld2.waps/libs/umeng_sdk.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
