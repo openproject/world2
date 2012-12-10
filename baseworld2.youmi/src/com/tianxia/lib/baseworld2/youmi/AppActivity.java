@@ -15,7 +15,7 @@ public class AppActivity extends MainActivity {
 
     @Override
     public void displayAd() {
-        AdManager.init(this,"c9976bb1456bbfa8", "0d3ae1d6056a542d", 30, false);
+        AdManager.init(this,getString(R.string.youmi_appid), getString(R.string.youmi_appsec), 30, false);
         try {
             mAdContainer.removeAllViews();
             mAdView = new AdView(this);
