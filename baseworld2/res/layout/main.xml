@@ -19,7 +19,7 @@
         android:layout_height="fill_parent">
         <LinearLayout android:id="@+id/ad_container"
             android:layout_width="fill_parent"
-            android:layout_height="50dip"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:gravity="center_horizontal" />
         <com.tianxia.lib.baseworld2.widget.RefreshListView android:id="@+id/main_list"

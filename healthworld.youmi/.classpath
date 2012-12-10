@@ -3,6 +3,9 @@
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="/baseworld2/libs/alipay_msp.jar"/>
+	<classpathentry kind="lib" path="/baseworld2/libs/umeng_sdk.jar"/>
+	<classpathentry kind="lib" path="/baseworld2.youmi/libs/youmi-android_v3.08fix_2012-09-18.jar"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
