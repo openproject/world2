@@ -41,17 +41,6 @@
                 android:layout_gravity="center"
                 android:layout_centerInParent="true"
                 android:orientation="vertical">
-                <Button android:id="@+id/item_beauty_joke"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/app_options_nav_bg"
-                    android:gravity="center"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="8dip"
-                    android:text="美女讲笑话"
-                    android:textSize="18sp"
-                    android:textColor="#333333"
-                    android:visibility="gone"/>
                 <Button android:id="@+id/item_base_set"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -80,6 +69,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="8dip"
                     android:text="获取积分"
+                    android:visibility="gone"
                     android:textSize="18sp"
                     android:textColor="#333333" />
                 <Button android:id="@+id/item_base_exit"

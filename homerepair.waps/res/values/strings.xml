@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_id">healthworld2</string>
+    <string name="app_id">homerepair</string>
     <string name="app_name">家居维修</string>
 
     <string name="setting_about_subject">家居维修\nHome Repair</string>

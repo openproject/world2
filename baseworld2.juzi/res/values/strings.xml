@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_id">culturehistory</string>
+    <string name="app_name">文化历史</string>
+    <string name="app_header_back">返回</string>
+    <string name="app_header_menu">设置</string>
+    <string name="app_header_menu_1">搜索</string>
+    <string name="app_notice_text">每天持续更新，在设置里面还可以去广告哦~</string>
+
+    <string name="main_options">选项</string>
+    <string name="main_options_share">分享</string>
+    <string name="main_options_copy">复制文字</string>
+    <string name="main_options_copy_toast">已经成功复制到剪贴板。</string>
+    <string name="main_options_share_title">分享一条来自《文化历史》的资讯</string>
+
+    <string name="details_title">正文</string>
+
+    <string name="setting_about">关于</string>
+    <string name="setting_about_subject">文化历史\nCulture History</string>
+    <string name="setting_about_description">学文化，学历史，长真见识，开拓真视野！</string>
+</resources>
