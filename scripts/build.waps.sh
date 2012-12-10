@@ -18,5 +18,5 @@ do
     sed -i "s/\(android:value=\)\"\(.*\)\"\( android:name=\"UMENG_CHANNEL\"\)/\1\"$market\"\3/g" AndroidManifest.xml
     sed -i "s/\(android:value=\)\"\(.*\)\"\( android:name=\"YOUMI_CHANNEL\"\)/\1\"$market\"\3/g" AndroidManifest.xml
     sed -i "s/\(android:value=\)\"\(.*\)\"\( android:name=\"WAPS_PID\"\)/\1\"$market\"\3/g" AndroidManifest.xml
-    #ant -Dapk-name=$project -Dapk-version=v2.0 -Dapk-market=$market
+    ant -Dapk-name=$project -Dapk-version=v2.0 -Dapk-market=$market
 done

@@ -12,6 +12,8 @@
         <echo>start initing ... </echo>
 
         <mkdir dir="gen" />
+        <mkdir dir="src" />
+        <mkdir dir="libs" />
         <delete>
             <fileset dir="gen"></fileset>
         </delete>

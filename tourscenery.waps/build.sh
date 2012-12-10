@@ -1,1 +1,1 @@
-../build.sh
+../scripts/build.waps.sh
