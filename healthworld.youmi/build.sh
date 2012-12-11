@@ -1,1 +1,1 @@
-../build_nowall.sh
+../scripts/build.youmi.sh
