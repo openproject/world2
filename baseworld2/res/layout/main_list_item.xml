@@ -33,20 +33,23 @@
         </LinearLayout>
         <ImageView android:id="@+id/item_good"
             android:src="@drawable/tag_good"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="right"
             android:layout_marginTop="4dip"
+            android:layout_marginRight="4dip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
          <ImageView android:id="@+id/item_set"
             android:src="@drawable/tag_set"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="right"
             android:layout_marginTop="4dip"
+            android:layout_marginRight="4dip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <ImageView android:id="@+id/item_pic"
             android:src="@drawable/tag_pic"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="right"
             android:layout_marginTop="4dip"
+            android:layout_marginRight="4dip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
