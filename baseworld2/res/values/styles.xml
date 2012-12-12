@@ -1,5 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="BaseTheme" parent="@android:style/Theme.Black.NoTitleBar">
+        <item name="app_header_bg">@drawable/app_header_bg</item>
+        <item name="app_header_top_line">@color/app_header_top_line</item>
+        <item name="app_header_bottom_line">@color/app_header_bottom_line</item>
+    </style>
+
+    <style name="BaseTheme.Green">
+        <item name="app_header_bg">@drawable/app_header_bg_green</item>
+        <item name="app_header_top_line">#ff70a202</item>
+        <item name="app_header_bottom_line">#ff70a202</item>
+    </style>
+
+    <style name="BaseTheme.Brown">
+        <item name="app_header_bg">@drawable/app_header_bg_brown</item>
+        <item name="app_header_top_line">#ff5a3524</item>
+        <item name="app_header_bottom_line">#ff5a3524</item>
+    </style>
+
+    <style name="BaseTheme.Elegance">
+        <item name="app_header_bg">@drawable/app_header_bg_elegance</item>
+        <item name="app_header_top_line">#ff835c26</item>
+        <item name="app_header_bottom_line">#ff835c26</item>
+    </style>
+
+    <style name="BaseTheme.Fresh">
+        <item name="app_header_bg">@drawable/app_header_bg_fresh</item>
+        <item name="app_header_top_line">#ffbab78e</item>
+        <item name="app_header_bottom_line">#ffbab78e</item>
+    </style>
+
     <style name="app_title_shadow">
         <item name="android:textColor">@color/app_title_white</item>
         <item name="android:shadowColor">@color/app_title_white_shadow</item>

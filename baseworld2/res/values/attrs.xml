@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BaseTheme">
+        <attr name="app_header_bg" format="reference" />
+        <attr name="app_header_top_line" format="color" />
+        <attr name="app_header_bottom_line" format="color" />
+    </declare-styleable>
+</resources>

@@ -4,14 +4,14 @@
     android:layout_height="fill_parent"
     android:orientation="vertical">
     <TextView
-        android:background="@color/app_header_top_line"
+        android:background="?app_header_top_line"
         android:layout_width="fill_parent"
         android:layout_height="1.0px" />
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="0dip"
         android:layout_weight="1.0"
-        android:background="@drawable/app_header_bg">
+        android:background="?app_header_bg">
         <Button android:id="@+id/app_header_back"
             android:textSize="@dimen/app_back_size"
             android:textColor="@color/app_title_white"
@@ -100,7 +100,7 @@
             android:layout_toLeftOf="@id/app_header_menu_1"/>
     </RelativeLayout>
     <TextView
-        android:background="@color/app_header_bottom_line"
+        android:background="?app_header_bottom_line"
         android:layout_width="fill_parent"
         android:layout_height="1.0px" />
 </LinearLayout>
