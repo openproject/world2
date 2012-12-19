@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tianxia.app.culturehistory"
+    android:versionCode="7"
+    android:versionName="V2.1">
+    <uses-sdk android:minSdkVersion="7"
+        android:targetSdkVersion="17" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <application android:name="com.tianxia.lib.baseworld2.juzi.AppApplication"
+        android:allowBackup="false"
+        android:label="@string/app_name"
+        android:icon="@drawable/icon"
+        android:theme="@style/BaseTheme">
+        <meta-data android:value="50436ea25270156df0000021" android:name="UMENG_APPKEY" />
+        <meta-data android:value="dev" android:name="UMENG_CHANNEL"/>
+        <meta-data android:name="JUZI_APPID" android:value="5044a130-6b2c-4845-949a-6d4f7250b239"/>
+        <meta-data android:name="MARKET_ID" android:value="dev" />
+        <activity android:name="com.tianxia.lib.baseworld2.juzi.AppActivity"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <receiver android:name="com.tianxia.lib.baseworld2.BaseBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <activity android:name="com.tianxia.lib.baseworld2.juzi.AppSettingActivity" />
+        <activity android:name="com.tianxia.lib.baseworld2.juzi.AppDetailsActivity" />
+        <activity android:name="com.tianxia.lib.baseworld2.activity.OptionsActivity" />
+        <activity android:name="com.tianxia.lib.baseworld2.activity.RefSetActivity"></activity>
+        <activity android:name="com.tianxia.lib.baseworld2.activity.ArchiverActivity"></activity>
+        <activity android:name="com.tianxia.lib.baseworld2.activity.ArchiverPageActivity"></activity>
+        <activity android:name="com.tianxia.lib.baseworld2.activity.RefSetSimpleActivity"></activity>
+        <activity android:name="com.tianxia.lib.baseworld2.activity.SettingAboutActivity"></activity>
+        <service android:name="com.tianxia.lib.baseworld2.upgrade.AppUpgradeService"></service>
+
+        <activity android:name="com.umeng.fb.ui.SendFeedback" android:windowSoftInputMode="adjustResize" />
+        <activity android:name="com.umeng.fb.ui.FeedbackConversations" />
+        <activity android:name="com.umeng.fb.ui.FeedbackConversation" android:configChanges="keyboard" />
+
+        <!-- 物品墙 -->
+        <activity android:name="com.juzi.main.TheAdVirtualGoods" android:screenOrientation="portrait" />
+        <!--浏览器 -->
+        <activity android:name="com.juzi.main.WebActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+    </application>
+</manifest>

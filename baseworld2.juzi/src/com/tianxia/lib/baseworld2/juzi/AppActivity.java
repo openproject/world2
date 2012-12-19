@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.juzi.main.AdView;
 import com.juzi.main.AppConnect;
 import com.tianxia.lib.baseworld2.activity.MainActivity;
+import com.tianxia.lib.baseworld2.activity.RefSetActivity;
 
 public class AppActivity extends MainActivity {
 
@@ -19,9 +20,6 @@ public class AppActivity extends MainActivity {
 
     @Override
     public void displayAd() {
-        //获取积分
-        //AppConnect.getInstance(this).getPoints(this);
-
         mAdView = new AdView(AppActivity.this);
         mAdContainer.addView(mAdView);
     }
@@ -30,5 +28,25 @@ public class AppActivity extends MainActivity {
     public void gotoSetting() {
         Intent intent = new Intent(this, AppSettingActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void gotoDetails(int position) {
+        Intent intent = new Intent(this, AppDetailsActivity.class);
+        intent.putExtra("statu", listData.get(position));
+        startActivity(intent);
+    }
+
+    @Override
+    protected void gotoRefSet(int season) {
+        Intent intent = new Intent(this, RefSetActivity.class);
+        intent.putExtra("index", season);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onDestroy() {
+        AppConnect.getInstance(this).finalize();
+        super.onDestroy();
     }
 }

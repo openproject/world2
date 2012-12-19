@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_id">culturehistory</string>
+    <string name="app_name">文化历史</string>
+
+    <string name="setting_about_subject">文化历史\nHealth World</string>
+    <string name="setting_about_description">读历史学文化，拓展视野！</string>
+
+    <string name="setting_share_app_subject">向你分享一个精彩应用《文化历史》</string>
+    <string name="setting_share_app_body">向你分享一个精彩应用《文化历史》,读历史学文化，拓展视野，提高自我修养，下载地址:</string>
+
+    <string name="options_title">文化历史副版</string>
+</resources>
