@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="nav_value">
+        <item>index</item>
+        <item>http://m.tianya.cn/bbs/list.jsp?item=no05</item>
+        <item>http://wap.cnki.net/F.html</item>
+        <item>http://cul.sina.cn/</item>
+        <item>http://history.3g.cn/lishi.aspx</item>
+        <item>http://f.lexun.com/list.aspx?bid=17750</item>
+        <item>http://wap.ycwb.com/indexTarget.do?channelid=1039</item>
+    </string-array>
+    <string-array name="nav_text">
+        <item>精选</item>
+        <item>天涯煮酒史</item>
+        <item>知网</item>
+        <item>新浪文史</item>
+        <item>3G历史</item>
+        <item>乐讯</item>
+        <item>金羊历史</item>
+    </string-array>
+</resources>
