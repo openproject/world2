@@ -55,5 +55,7 @@
         <activity android:name="com.juzi.main.WebActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait" />
+        <activity android:name="com.juzi.main.DownManagement" 
+            android:theme="@android:style/Theme.Translucent"></activity>
     </application>
 </manifest>

@@ -4,8 +4,8 @@
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry kind="lib" path="/baseworld2/libs/alipay_msp.jar"/>
 	<classpathentry kind="lib" path="/baseworld2/libs/umeng_sdk.jar"/>
-	<classpathentry kind="lib" path="/baseworld2.juzi/libs/JuZiSDK2.2.1.jar"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="lib" path="/baseworld2.juzi/libs/JuZiSDK2.2.3.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

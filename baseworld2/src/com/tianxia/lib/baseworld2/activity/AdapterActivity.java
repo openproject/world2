@@ -116,10 +116,14 @@ public abstract class AdapterActivity<T> extends BaseActivity {
         if (mEmptyFailView == null) {
             mEmptyFailView = EmptyViewUtils.createFailView(this);
         }
-        ((ViewGroup)listView.getParent()).removeView(mEmptyLoadingView);
         if (mEmptyLoadingView.getParent() == null) {
-            ((ViewGroup)listView.getParent()).addView(mEmptyFailView);
-            listView.setEmptyView(mEmptyFailView);
+            try {
+                ((ViewGroup)listView.getParent()).removeAllViews();
+                ((ViewGroup)listView.getParent()).addView(mEmptyFailView);
+                listView.setEmptyView(mEmptyFailView);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } 
     }
 }
