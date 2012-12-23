@@ -10,8 +10,8 @@ project=${project/\.*/}
 # enter the right parent dir
 cd $basedir
 
-markets="waps google official appchina gfan qq nduo feiliu 3g 360 zhuamob baidu sohu 163 samsung coolmart meizu moto liantong iandroid imobile xiaomi nearme dev"
-#markets="youmi 10020 goapk dev"
+#markets="waps google official appchina gfan qq nduo feiliu 3g 360 zhuamob baidu sohu 163 samsung coolmart meizu moto liantong iandroid imobile xiaomi nearme dev"
+markets="mumayi eo dev"
 for market in $markets
 do
     echo packaging $project.v2.1_$market.apk ...
