@@ -23,7 +23,7 @@
         <meta-data android:value="dev" android:name="UMENG_CHANNEL"/>
         <meta-data android:name="JUZI_APPID" android:value="5044a130-6b2c-4845-949a-6d4f7250b239"/>
         <meta-data android:name="MARKET_ID" android:value="dev" />
-        <activity android:name="com.tianxia.lib.baseworld2.juzi.AppActivity"
+        <activity android:name="com.tianxia.lib.baseworld2.activity.SplashActivity"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,6 +35,7 @@
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
+        <activity android:name="com.tianxia.lib.baseworld2.juzi.AppActivity" />
         <activity android:name="com.tianxia.lib.baseworld2.juzi.AppSettingActivity" />
         <activity android:name="com.tianxia.lib.baseworld2.juzi.AppDetailsActivity" />
         <activity android:name="com.tianxia.lib.baseworld2.activity.OptionsActivity" />

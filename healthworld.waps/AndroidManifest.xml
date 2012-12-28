@@ -25,7 +25,7 @@
         <meta-data android:name="WAPS_ID" android:value="923cfb1a970c051eccd0af856bd3752c" />
         <!--以下属性为分发渠道ID,编码表参见本文档末附表-->
         <meta-data android:value="dev" android:name="WAPS_PID"/>
-        <activity android:name="com.tianxia.lib.baseworld2.waps.AppActivity"
+        <activity android:name="com.tianxia.lib.baseworld2.activity.SplashActivity"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,6 +38,7 @@
             </intent-filter>
         </receiver>
 
+        <activity android:name="com.tianxia.lib.baseworld2.waps.AppActivity" />
         <activity android:name="com.tianxia.lib.baseworld2.waps.AppSettingActivity" />
         <activity android:name="com.tianxia.lib.baseworld2.waps.AppDetailsActivity" />
         <activity android:name="com.tianxia.lib.baseworld2.waps.AppOptionsActivity" />
