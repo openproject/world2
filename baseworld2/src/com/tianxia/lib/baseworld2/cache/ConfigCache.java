@@ -89,7 +89,6 @@ public class ConfigCache {
             for (int i = 0; i < childFiles.length; i++) {
                 clearCache(childFiles[i]);
             }
-            cacheFile.delete();
         }
     }
 }

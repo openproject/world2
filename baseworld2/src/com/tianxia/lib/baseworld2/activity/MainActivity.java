@@ -504,7 +504,8 @@ public class MainActivity extends AdapterActivity<StatuInfo>
 
         String result = null;
         if (BaseApplication.mSdcardDataDir == null) {
-            BaseApplication.mSdcardDataDir = Environment.getExternalStorageDirectory().getPath() +  "/culturehistory/config/";
+            BaseApplication.mSdcardDataDir = Environment.getExternalStorageDirectory().getPath()
+                    +  "/" + BaseApplication.mAppId + "/config/";
         }
         File file = new File(BaseApplication.mSdcardDataDir + "/" + StringUtils.replaceUrlWithPlus(BaseApplication.mServerLatestUrl));
         if (file.exists() && file.isFile()) {

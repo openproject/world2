@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="splash_out_activity">com.tianxia.lib.baseworld2.youmi.AppActivity</string>
+</resources>
