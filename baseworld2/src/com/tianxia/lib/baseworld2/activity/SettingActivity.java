@@ -126,9 +126,14 @@ public class SettingActivity extends BaseActivity
 
         } else if (v == mSettingItemMark) {
 
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(Uri.parse("market://details?id=" + getPackageName()));
-            startActivity(intent);
+            try {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("market://details?id=" + getPackageName()));
+                startActivity(intent);
+            } catch (Exception e) {
+                Toast.makeText(this, R.string.setting_market_none, Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+            }
 
         } else if (v == mSettingItemClear) {
             clear();
