@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="youmi_appid">e266585102e08607</string>
+    <string name="youmi_appsec">ba91cfc1eed8f514</string>
+
+    <string name="app_id">humorjoke</string>
+    <string name="app_name">幽默笑话</string>
+
+    <string name="setting_about_subject">幽默笑话\nHumor Joke</string>
+    <string name="setting_about_description">幽默笑话，让每天都过的开心快乐！</string>
+
+    <string name="setting_share_app_subject">向你分享一个精彩应用《幽默笑话》</string>
+    <string name="setting_share_app_body">向你分享一个精彩应用《幽默笑话》,让您每天都过的开心快乐！下载地址:</string>
+
+    <string name="app_notice_options_text">副版，主要提供一些更精彩的内容、福利等！</string>
+
+    <string name="options_title">幽默笑话副版</string>
+</resources>
