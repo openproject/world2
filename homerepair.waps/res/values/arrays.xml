@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="nav_value">
+        <item>option</item>
         <item>index</item>
         <item>http://mobi.trends.com.cn/ch_home/</item>
         <item>http://wap.homekoo.com/</item>
     </string-array>
     <string-array name="nav_text">
+        <item>副版</item>
         <item>精选</item>
         <item>时尚网</item>
         <item>新居网</item>

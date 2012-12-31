@@ -18,7 +18,7 @@
         android:allowBackup="false"
         android:label="@string/app_name"
         android:icon="@drawable/icon"
-        android:theme="@android:style/Theme.Black.NoTitleBar">
+        android:theme="@style/BaseTheme">
         <meta-data android:value="50553b765270152d66000146" android:name="UMENG_APPKEY" />
         <meta-data android:value="dev" android:name="UMENG_CHANNEL"/>
         <meta-data android:value="dev" android:name="YOUMI_CHANNEL" />

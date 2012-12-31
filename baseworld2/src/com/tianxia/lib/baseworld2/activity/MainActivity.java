@@ -299,7 +299,7 @@ public class MainActivity extends AdapterActivity<StatuInfo>
            textView.setTag(mNavValue[i]);
            textView.setGravity(Gravity.CENTER);
            textView.setPadding(12, 8, 12, 8);
-           if (i == 0) {
+           if ("index".equals(textView.getTag())) {
                textView.setBackgroundResource(R.drawable.app_nav_selected);
                textView.setTextSize(18);
            } else {
@@ -309,11 +309,19 @@ public class MainActivity extends AdapterActivity<StatuInfo>
            textView.setOnClickListener(new View.OnClickListener() {
                public void onClick(View v) {
                    mNavClick = 0;
-                   for (Button btn : mNavButtons) {
-                        btn.setBackgroundResource(0);
-                        btn.setTextSize(15);
+                   if (!"option".equals(textView.getTag())) {
+                       for (Button btn : mNavButtons) {
+                           btn.setBackgroundResource(0);
+                           btn.setTextSize(15);
+                       }
                    }
-                   if (!"index".equals(textView.getTag())) {
+                   if ("index".equals(textView.getTag())) {
+                       listView.setVisibility(View.VISIBLE);
+                   } else if ("option".equals(textView.getTag())) {
+                       gotoOptions();
+                       overridePendingTransition(R.anim.slide_from_left_in, R.anim.silde_from_left_out);
+                       return;
+                   } else {
                        hideLoadingEmptyView();
                        listView.setVisibility(View.GONE);
                        mWebViewProgressBar.setVisibility(View.VISIBLE);
@@ -335,8 +343,6 @@ public class MainActivity extends AdapterActivity<StatuInfo>
                        });
 
                        mWebView.loadUrl(String.valueOf(v.getTag()));
-                   } else {
-                       listView.setVisibility(View.VISIBLE);
                    }
                    v.setBackgroundResource(R.drawable.app_nav_selected);
                    ((TextView)v).setTextSize(18);

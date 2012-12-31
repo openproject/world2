@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="nav_value">
+        <item>option</item>
         <item>index</item>
         <item>http://lvyou.baidu.com/main/wap/index</item>
         <item>http://m.tuniu.com/</item>
@@ -8,6 +9,7 @@
         <item>http://m.wisetrip.com/</item>
     </string-array>
     <string-array name="nav_text">
+        <item>副版</item>
         <item>精选</item>
         <item>百度旅游</item>
         <item>途牛</item>

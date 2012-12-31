@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="nav_value">
+        <item>option</item>
         <item>index</item>
         <item>http://wap.iciba.com/</item>
         <item>http://wap.youdao.com/</item>
@@ -9,6 +10,7 @@
         <item>http://m.tp230.cn/</item>
     </string-array>
     <string-array name="nav_text">
+        <item>副版</item>
         <item>精选</item>
         <item>爱词霸</item>
         <item>有道</item>

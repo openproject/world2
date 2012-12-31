@@ -57,7 +57,17 @@ public class SettingAboutActivity extends BaseActivity{
         }
 
         mSettingAboutLinkWebView = (WebView) findViewById(R.id.setting_about_link);
-        mSettingAboutLinkWebView.loadUrl("file:///android_asset/setting_about_link.html");
+//        mSettingAboutLinkWebView.loadUrl("file:///android_asset/setting_about_link.html");
+        String webData = "<html>"
+                + "<style>body{font-size:14px;background-color:#FFFFFA;}#content{margin-left:25px;}span{line-height:1.5;}</style>"
+                + "<body><div id=\"content\">"
+                + "<span>TEL:15800413861</span><br/>"
+                + "<span>QQ:673592063</span><br/>"
+                + "<span>Site:</span><br/><span><a href='http://www.kaiyuanxiangmu.com'>http://www.kaiyuanxiangmu.com</a></span><br/>"
+                + "<span>Source:</span><br/><span><a href='https://github.com/openproject/world2'>https://github.com/openproject/world2</a></span><br/>"
+                + "<span>Your support is our motivation,<br/>welcome to join us!!!</span></div></body>"
+                + "</html>";
+        mSettingAboutLinkWebView.loadData(webData, "text/html", "utf-8");
     }
 
     private String getChannelName(String channelKey) {

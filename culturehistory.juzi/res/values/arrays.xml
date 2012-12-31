@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="nav_value">
+        <item>option</item>
         <item>index</item>
         <item>http://m.tianya.cn/bbs/list.jsp?item=no05</item>
         <item>http://wap.cnki.net/F.html</item>
@@ -10,6 +11,7 @@
         <item>http://wap.ycwb.com/indexTarget.do?channelid=1039</item>
     </string-array>
     <string-array name="nav_text">
+        <item>副版</item>
         <item>精选</item>
         <item>天涯煮酒史</item>
         <item>知网</item>
